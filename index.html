@@ -2,21 +2,16 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <!-- 针对手机端特别锁定了缩放，并适配了刘海屏的安全区域 (viewport-fit=cover) -->
+    <!-- 适配手机视口，防止双击缩放 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Farewell CCMC - 专属纪念</title>
-    <!-- 引入样式 -->
     <link rel="stylesheet" href="style.css">
-    <!-- 引入适合手机阅读的谷歌字体 -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- 绘制彩带雨效果的画布 -->
     <canvas id="confetti-canvas"></canvas>
-
-    <!-- 背景渐变光晕 -->
-    <div class="bg-glow"></div>
 
     <!-- 背景音乐 -->
     <audio id="bg-music" loop>
@@ -32,35 +27,48 @@
     <div id="welcome-screen" class="welcome-screen">
         <div class="welcome-content">
             <div class="envelope-icon">✉️</div>
-            <h2 id="welcome-title">亲爱的 CCMC 伙伴</h2>
-            <p>我们为您准备了一份专属的记忆贺卡</p>
+            <h2 id="welcome-title">亲爱的伙伴</h2>
+            <p>为您准备了一份专属的记忆贺卡</p>
             <button id="open-btn" class="open-btn">点击开启惊喜</button>
         </div>
     </div>
 
-    <!-- 2. 手机专属卡片页 -->
-    <div id="card-screen" class="card-container hide">
-        <!-- 照片区域 -->
-        <div class="image-box">
-            <img id="friend-img" src="" alt="纪念照片">
+    <!-- 2. 全屏沉浸式移动贺卡页（取消了小卡片限制，100%铺满手机） -->
+    <div id="card-screen" class="mobile-page-container hide">
+        
+        <!-- 信件区 -->
+        <div class="letter-section">
+            <h2 class="salutation">亲爱的 <span id="friend-name"></span>：</h2>
+            <p id="friend-role" class="role-tag"></p>
+            <!-- 1. 写给他们的长信内容 -->
+            <div id="letter-content" class="letter-text"></div>
         </div>
 
-        <!-- 祝福文字区域 -->
-        <div class="content-box">
-            <h1 id="friend-name"></h1>
-            <p id="friend-role" class="role-tag"></p>
-            
-            <div class="divider"></div>
-
-            <p id="blessing-text" class="message"></p>
-            
-            <div class="footer-sign">
-                <p>—— 来自 CCMC 的全体伙伴</p>
+        <!-- 2. 精彩回忆合照区（精美拍立得相框风格） -->
+        <div class="photo-section">
+            <div class="polaroid-frame">
+                <img id="friend-img" src="" alt="专属回忆">
+                <div class="polaroid-caption">❤️ 那些闪光的回忆</div>
             </div>
         </div>
+
+        <!-- 3. 最后的专属祝福语 -->
+        <div class="blessing-section">
+            <div class="blessing-card">
+                <span class="quote-mark">“</span>
+                <p id="blessing-text" class="blessing-para"></p>
+                <span class="quote-mark text-right">”</span>
+            </div>
+        </div>
+
+        <!-- 底部签名区 -->
+        <div class="footer-sign">
+            <p>愿你前途似锦，常回家看看</p>
+            <p class="sign-name">—— CCMC 全体伙伴 敬上</p>
+        </div>
+        
     </div>
 
-    <!-- 引入脚本 -->
     <script src="script.js"></script>
 </body>
 </html>
