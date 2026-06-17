@@ -1,32 +1,39 @@
 // ==========================================
-// 1. 名单数据库（完全满足：信件、照片、祝福语 3大板块）
+// 1. 名单数据库（完全满足：信件、无限张合照、祝福语）
 // ==========================================
 const friendsData = {
     "test1": {
         name: "小明",
         role: "CCMC 设计组",
-        // 板块1：写给他的长信 (在代码中输入 \n 可以直接让信件在手机上换行)
         letter: "好久不见。还记得你刚加入 CCMC 的时候，还是个略带羞涩的新人。\n在过去的几年里，我们一起熬夜改图，一起为了策划案争论不休，也一起吃过无数顿外卖。谢谢你留下那些精彩又用心的设计，CCMC 的每一个高光时刻都有你的汗水。\n虽然我们要在这里说再见了，但这段共同奋斗的记忆永远都在。祝你在新的旅程中顺顺利利！",
-        // 板块2：他的专属合照
-        image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop",
-        // 板块3：最后的专属祝福语
+        // 📷 【多图区域】：在这里用英文逗号隔开，填入任意多张图片链接
+        images: [
+            "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&auto=format&fit=crop"
+        ],
         blessing: "最后，祝你未来的路越走越宽广！灵感永远爆棚，天天好心情！"
     },
     "test2": {
         name: "红红",
         role: "CCMC 策划组",
         letter: "时光过得真快，转眼就到了要送别你的时候。\n非常感恩在 CCMC 与你相遇，每次活动策划有你在都让人感到无比踏实。你的细心、你的靠谱，我们每个人都看在眼里、记在心上。\n愿你未来在新的岗位上继续发光发热，展现属于你的风采！",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&auto=format&fit=crop",
+        images: [
+            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&auto=format&fit=crop"
+        ],
         blessing: "最后，祝你在新的旅程中一切顺利，天天开心，所得皆所愿！"
     }
 };
 
-// 默认兜底页面数据
+// 默认兜底页面数据 (已经修复了“双重亲爱的”文字重合Bug)
 const defaultData = {
-    name: "亲爱的 CCMC 伙伴",
+    name: "CCMC 伙伴",
     role: "CCMC 大家庭",
     letter: "非常感谢你一直以来对 CCMC 的支持与付出！这里凝聚了大家共同的回忆与汗水。\n虽然这里可能没有展示针对您个人的专属信件，但我们同样珍视与你共处的每一天。祝你前路顺遂，一切皆好！",
-    image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop",
+    images: [
+        "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop"
+    ],
     blessing: "最后，祝你未来人生道路平坦，常回家看看，CCMC 永远是你的港湾！"
 };
 
@@ -40,25 +47,94 @@ const welcomeTitle = document.getElementById('welcome-title');
 const nameElement = document.getElementById('friend-name');
 const roleElement = document.getElementById('friend-role');
 const letterElement = document.getElementById('letter-content');
-const imgElement = document.getElementById('friend-img');
 const blessingElement = document.getElementById('blessing-text');
 
-// 根据 ID 从数据库提取数据
+// 匹配数据
 let currentFriend = defaultData;
 if (friendId && friendsData[friendId]) {
     currentFriend = friendsData[friendId];
 }
 
-// 把对应的文字填入网页中
-welcomeTitle.innerText = "亲爱的 " + currentFriend.name;
+// 渲染文字内容
+welcomeTitle.innerText = "亲爱的 " + currentFriend.name; // 修复了多重拼接Bug
 nameElement.innerText = currentFriend.name;
 roleElement.innerText = currentFriend.role;
 letterElement.innerText = currentFriend.letter;
-imgElement.src = currentFriend.image;
 blessingElement.innerText = currentFriend.blessing;
 
 // ==========================================
-// 3. 页面转场与音乐逻辑
+// 3. 动态渲染照片无限轮播轨道与指示点
+// ==========================================
+const carouselTrack = document.getElementById('carousel-track');
+const carouselDots = document.getElementById('carousel-dots');
+
+const imagesArray = currentFriend.images || [];
+
+// 清空默认内容
+carouselTrack.innerHTML = '';
+carouselDots.innerHTML = '';
+
+// 动态创建每一张照片和对应的指示点
+imagesArray.forEach((imgUrl, index) => {
+    // a. 创建照片幻灯片
+    const slide = document.createElement('div');
+    slide.className = 'carousel-slide';
+    
+    const img = document.createElement('img');
+    img.src = imgUrl;
+    img.alt = `回忆照片 ${index + 1}`;
+    
+    // 给照片绑定点击事件 -> 打开全屏原图查看
+    img.addEventListener('click', () => {
+        openLightbox(imgUrl);
+    });
+
+    const caption = document.createElement('div');
+    caption.className = 'caption';
+    caption.innerText = `❤️ 回忆一角 (${index + 1}/${imagesArray.length})`;
+
+    slide.appendChild(img);
+    slide.appendChild(caption);
+    carouselTrack.appendChild(slide);
+
+    // b. 创建指示器小圆点
+    const dot = document.createElement('div');
+    dot.className = `dot ${index === 0 ? 'active' : ''}`;
+    carouselDots.appendChild(dot);
+});
+
+// 监听滑动事件，使下方小圆点和当前滑动的照片完美同步
+carouselTrack.addEventListener('scroll', () => {
+    const width = carouselTrack.clientWidth;
+    const index = Math.round(carouselTrack.scrollLeft / width);
+    
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, idx) => {
+        if (idx === index) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+});
+
+// ==========================================
+// 4. 原图查看器（Lightbox）触发逻辑
+// ==========================================
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+function openLightbox(url) {
+    lightboxImg.src = url;
+    lightbox.classList.remove('hide');
+}
+
+lightbox.addEventListener('click', () => {
+    lightbox.classList.add('hide');
+});
+
+// ==========================================
+// 5. 封面转场与背景音乐
 // ==========================================
 const welcomeScreen = document.getElementById('welcome-screen');
 const cardScreen = document.getElementById('card-screen');
@@ -67,28 +143,23 @@ const musicBtn = document.getElementById('music-btn');
 const bgMusic = document.getElementById('bg-music');
 
 openBtn.addEventListener('click', () => {
-    // 播放音乐
     bgMusic.play().then(() => {
         musicBtn.classList.add('music-playing');
-    }).catch(err => console.log("音乐播放受阻:", err));
+    }).catch(err => console.log("音乐播不受阻:", err));
 
-    // 渐出封面
     welcomeScreen.style.opacity = '0';
     setTimeout(() => {
         welcomeScreen.classList.add('hide');
         
-        // 渐入卡片
         cardScreen.classList.remove('hide');
         setTimeout(() => {
             cardScreen.classList.add('show');
         }, 50);
 
-        // 显示音乐按钮
         musicBtn.classList.remove('hide');
         musicBtn.classList.add('show');
-    }, 800);
+    }, 600);
 
-    // 触发五彩礼花
     startConfetti();
 });
 
@@ -103,7 +174,7 @@ musicBtn.addEventListener('click', () => {
 });
 
 // ==========================================
-// 4. 彩带雨效果逻辑（保持不变）
+// 6. 彩带雨逻辑
 // ==========================================
 function startConfetti() {
     const canvas = document.getElementById("confetti-canvas");
