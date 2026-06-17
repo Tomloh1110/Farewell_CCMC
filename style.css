@@ -1,4 +1,4 @@
-/* 清除手机端多余样式 */
+/* 清除手机端默认样式 */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,7 +9,7 @@
 html, body {
     width: 100%;
     min-height: 100vh;
-    background-color: #f7f3f0; /* 温馨舒适的底色 */
+    background-color: #f7f3f0;
     -webkit-overflow-scrolling: touch; 
 }
 
@@ -34,7 +34,38 @@ body {
 }
 
 /* ==========================================
-   1. 封面页（全屏铺满）
+   大图查看弹窗 (Lightbox)
+   ========================================== */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox img {
+    max-width: 95%;
+    max-height: 85%;
+    object-fit: contain;
+    border-radius: 8px;
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ==========================================
+   1. 封面页（整体尺寸等比例放大）
    ========================================== */
 .welcome-screen {
     position: fixed;
@@ -54,149 +85,230 @@ body {
 .welcome-content {
     text-align: center;
     width: 100%;
-    max-width: 320px;
+    max-width: 340px;
+}
+
+/* 放大信封动画区域 */
+.envelope-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
 }
 
 .envelope-icon {
-    font-size: 65px;
-    margin-bottom: 20px;
+    font-size: 85px; /* 放大信封图标 */
     animation: pulse 2s infinite;
+    display: inline-block;
 }
 
 .welcome-content h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 12px;
+    font-size: 26px; /* 放大标题字号 */
+    color: #2b2b2b;
+    margin-bottom: 15px;
     font-weight: 700;
+    line-height: 1.4;
 }
 
 .welcome-content p {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 40px;
+    font-size: 15px; /* 放大描述字号 */
+    color: #666;
+    margin-bottom: 45px;
 }
 
+/* 放大手机按钮，使其更有点击欲 */
 .open-btn {
     background-color: #d99a84;
     color: white;
     border: none;
-    height: 50px; 
+    height: 56px; /* 加高至56px，更符合触屏点击标准 */
     width: 100%;
-    max-width: 240px;
-    font-size: 16px;
+    max-width: 260px;
+    font-size: 18px; /* 按钮文字变大 */
     font-weight: 700;
-    border-radius: 25px;
+    border-radius: 28px;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(217, 154, 132, 0.35);
+    box-shadow: 0 6px 20px rgba(217, 154, 132, 0.4);
 }
 
 .open-btn:active {
     background-color: #c9856f;
-    transform: scale(0.98);
+    transform: scale(0.97);
 }
 
 /* ==========================================
-   2. 沉浸式手机页面容器（完美铺满手机，内容自上而下舒展滚动）
+   2. 沉浸式手机页面容器（100%铺满）
    ========================================== */
 .mobile-page-container {
     width: 100%;
     min-height: 100vh;
-    padding: calc(30px + env(safe-area-inset-top)) 20px calc(40px + env(safe-area-inset-bottom)) 20px;
-    background: linear-gradient(to bottom, #fefbfc 0%, #f7f3f0 100%);
+    /* 顶部给悬浮音符留出安全距离 */
+    padding: calc(55px + env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom)) 16px;
+    background: linear-gradient(to bottom, #fcf8f6 0%, #f7f3f0 100%);
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 32px; /* 控制各个板块之间的间距 */
+    gap: 36px; 
     opacity: 0;
 }
 
-/* 点击后手机页面淡入上升 */
 .mobile-page-container.show {
     display: flex !important;
     opacity: 1;
     animation: slideUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* 2.1 信件区样式 */
-.letter-section {
+/* ------------------------------------------
+   2.1 写信区域 - 精美实体信纸模版（重点重构）
+   ------------------------------------------ */
+.letter-paper {
+    background-color: #fdfaf2; /* 温暖经典的复古米黄信纸底色 */
+    border: 1px solid #ebdcb9; /* 柔和的纸张边缘线 */
+    border-radius: 12px;
+    padding: 28px 20px; /* 增加内边距 */
+    box-shadow: 0 6px 20px rgba(181, 159, 148, 0.15); /* 模拟信纸铺在桌面上的轻微投影 */
+    position: relative;
+    overflow: hidden;
+}
+
+/* 信纸顶部的传统复古红色装饰横线 */
+.paper-header-line {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 5px;
+    background-color: #d99a84;
 }
 
 .salutation {
-    font-size: 24px;
+    font-size: 26px; /* 明显放大名字，重点突出 */
     font-weight: 700;
-    color: #333333;
-    margin-bottom: 8px;
+    color: #2b2b2b;
+    margin-bottom: 6px;
     text-align: left;
 }
 
 .role-tag {
     display: inline-block;
-    font-size: 12px;
+    font-size: 13px;
     color: #9b8a82;
-    background-color: #f2ebe7;
-    padding: 3px 12px;
-    border-radius: 12px;
-    margin-bottom: 20px;
+    background-color: #ebdcb9;
+    padding: 3px 14px;
+    border-radius: 15px;
+    margin-bottom: 24px;
     font-weight: 500;
 }
 
 .letter-text {
-    font-size: 16px; /* 调大手机端字体，极易阅读 */
-    line-height: 1.85; /* 让信件排版不拥挤 */
-    color: #555555;
+    font-size: 17px; /* 放大信件正文字号，更利于在手机上轻松阅读 */
+    line-height: 1.95; /* 增加行距，拒绝紧凑和局促感 */
+    color: #4a4a4a;
     text-align: justify;
-    text-indent: 2em; /* 首行缩进两格，符合中文写信格式 */
-    white-space: pre-wrap; /* 自动保留你输入的换行格式 */
+    text-indent: 2em; 
+    white-space: pre-wrap; 
+    letter-spacing: 0.5px; /* 增加字符间距，高级感明显提升 */
 }
 
-/* 2.2 拍立得照片墙样式 */
+/* ------------------------------------------
+   2.2 照片轮播区（手势左右滑动 & 无限多张）
+   ------------------------------------------ */
 .photo-section {
     width: 100%;
-    display: flex;
-    justify-content: center;
 }
 
-.polaroid-frame {
-    background-color: #ffffff;
-    padding: 14px 14px 20px 14px;
-    border-radius: 4px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    width: 100%;
-    max-width: 320px; /* 适合手机的合照大小 */
-    transform: rotate(-1.5deg); /* 微微旋转，显得更自然文艺 */
-}
-
-.polaroid-frame img {
-    width: 100%;
-    aspect-ratio: 4 / 3; /* 限制合照比例为经典的4:3 */
-    object-fit: cover;
-    border-radius: 2px;
-}
-
-.polaroid-caption {
+.section-title {
+    font-size: 15px;
+    color: #888888;
+    margin-bottom: 12px;
     text-align: center;
+    font-weight: 500;
+}
+
+/* 轮播视口 */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* 滑动轨道：核心是利用 CSS Native Scroll Snapping 实现无卡顿滑动 */
+.carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* 每次滑动都精准定位到一张照片 */
+    -webkit-overflow-scrolling: touch; /* iOS 滑动加速 */
+    scrollbar-width: none; /* 隐藏滚动条 */
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none; /* 隐藏 Webkit 滚动条 */
+}
+
+/* 每张照片滑块 */
+.carousel-slide {
+    flex: 0 0 100%; /* 每张照片正好占满屏幕宽度 */
+    scroll-snap-align: start;
+    background-color: #ffffff;
+    padding: 10px 10px 15px 10px; /* 模拟相框效果 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carousel-slide img {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* 经典比例 */
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.carousel-slide .caption {
     font-size: 13px;
     color: #888888;
-    margin-top: 12px;
+    margin-top: 10px;
     font-family: serif;
+    font-style: italic;
 }
 
-/* 2.3 最后的专属祝福语卡片 */
+/* 轮播圆点指示器 */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ebdcb9;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+    background-color: #d99a84;
+    transform: scale(1.2); /* 激活的小圆点放大显示 */
+}
+
+/* ------------------------------------------
+   2.3 最后的专属祝福语卡片
+   ------------------------------------------ */
 .blessing-section {
     width: 100%;
 }
 
 .blessing-card {
-    background: rgba(217, 154, 132, 0.08); /* 淡淡的主题暖粉色背景 */
-    border-left: 4px solid #d99a84; /* 左侧金色/粉色立柱装饰线 */
-    padding: 20px 16px;
-    border-radius: 0 12px 12px 0;
+    background: rgba(217, 154, 132, 0.08); 
+    border-left: 5px solid #d99a84; /* 加粗边缘立柱 */
+    padding: 24px 20px;
+    border-radius: 0 14px 14px 0;
     position: relative;
 }
 
 .quote-mark {
-    font-size: 28px;
+    font-size: 32px; /* 放大双引号 */
     color: #d99a84;
     font-weight: 700;
     line-height: 1;
@@ -208,44 +320,45 @@ body {
 }
 
 .blessing-para {
-    font-size: 15px;
-    line-height: 1.7;
-    color: #444444;
+    font-size: 16px; /* 祝福语加粗放大 */
+    line-height: 1.8;
+    color: #333333;
     font-weight: 500;
-    padding: 4px 10px;
+    padding: 6px 10px;
     text-align: center;
 }
 
 /* 底部签名区 */
 .footer-sign {
-    margin-top: 10px;
+    margin-top: 12px;
     text-align: right;
     color: #888888;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.8;
 }
 
 .sign-name {
     font-weight: 700;
     color: #555555;
-    margin-top: 4px;
+    margin-top: 6px;
+    font-size: 15px;
 }
 
 /* ==========================================
-   3. 手机悬浮音乐控制按钮
+   3. 手机悬浮音乐控制按钮（避开右上角菜单）
    ========================================== */
 .music-btn {
     position: fixed;
-    top: calc(12px + env(safe-area-inset-top)); 
+    top: calc(14px + env(safe-area-inset-top)); 
     right: 16px;
-    width: 38px;
-    height: 38px;
-    background: rgba(255, 255, 255, 0.9);
+    width: 42px; /* 稍微放大 */
+    height: 42px;
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
     z-index: 100;
 }
 
@@ -258,15 +371,15 @@ body {
     animation: rotate 4s linear infinite;
 }
 
-/* 动画效果 */
+/* 动画特效声明 */
 @keyframes slideUp {
-    from { opacity: 0; transform: translateY(40px); }
+    from { opacity: 0; transform: translateY(50px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.08); }
+    50% { transform: scale(1.1); }
     100% { transform: scale(1); }
 }
 
