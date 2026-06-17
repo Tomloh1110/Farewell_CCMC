@@ -1,8 +1,11 @@
-/* 清除手机端默认样式 */
+/* ==========================================
+   一、 全局基础重置与手机端适配
+   ========================================== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    /* 消除手机端点击时多余的半透明灰色背景 */
     -webkit-tap-highlight-color: transparent; 
 }
 
@@ -10,14 +13,23 @@ html, body {
     width: 100%;
     min-height: 100vh;
     background-color: #f7f3f0;
+    /* 优化手机端弹性滚动效果 */
     -webkit-overflow-scrolling: touch; 
 }
 
 body {
     font-family: 'Noto Sans SC', -apple-system, sans-serif;
     color: #444444;
+    overflow-x: hidden;
 }
 
+/* 隐藏元素的辅助类 */
+.hide {
+    display: none !important;
+    opacity: 0;
+}
+
+/* 彩带画布 */
 #confetti-canvas {
     position: fixed;
     top: 0;
@@ -28,13 +40,19 @@ body {
     z-index: 999;
 }
 
-.hide {
-    display: none !important;
-    opacity: 0;
+/* 移动端柔和背景光晕 */
+.bg-glow {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(255, 182, 193, 0.35) 0%, rgba(255, 255, 255, 0) 70%);
+    top: 5%;
+    left: 5%;
+    z-index: 1;
 }
 
 /* ==========================================
-   大图查看弹窗 (Lightbox)
+   二、 大图查看弹窗 (Lightbox)
    ========================================== */
 .lightbox {
     position: fixed;
@@ -47,25 +65,20 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    opacity: 1;
-    transition: opacity 0.3s ease;
 }
 
 .lightbox img {
+    /* 2. 图片自适应：不设置固定像素宽度 */
     max-width: 95%;
-    max-height: 85%;
+    height: auto;
+    max-height: 85vh;
     object-fit: contain;
     border-radius: 8px;
     animation: zoomIn 0.3s ease;
 }
 
-@keyframes zoomIn {
-    from { transform: scale(0.9); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
 /* ==========================================
-   1. 封面页（整体尺寸等比例放大）
+   三、 封面入口页（Flex 居中布局）
    ========================================== */
 .welcome-screen {
     position: fixed;
@@ -74,7 +87,9 @@ body {
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, #fcebe6 0%, #f7f3f0 100%);
+    /* 4. 采用响应式 Flex 布局，轴向为纵向单列 */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 10;
@@ -83,51 +98,54 @@ body {
 }
 
 .welcome-content {
+    /* 4. 子元素同样纵向单列排列 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     width: 100%;
     max-width: 340px;
 }
 
-/* 放大信封动画区域 */
 .envelope-wrapper {
-    display: flex;
-    justify-content: center;
     margin-bottom: 25px;
 }
 
 .envelope-icon {
-    font-size: 85px; /* 放大信封图标 */
+    font-size: 80px;
     animation: pulse 2s infinite;
-    display: inline-block;
 }
 
+/* 3. 手机端标题字号与行高放大 */
 .welcome-content h2 {
-    font-size: 26px; /* 放大标题字号 */
+    font-size: 26px; 
     color: #2b2b2b;
     margin-bottom: 15px;
     font-weight: 700;
     line-height: 1.4;
 }
 
-.welcome-content p {
-    font-size: 15px; /* 放大描述字号 */
+.welcome-desc {
+    font-size: 15px;
     color: #666;
     margin-bottom: 45px;
+    line-height: 1.5;
 }
 
-/* 放大手机按钮，使其更有点击欲 */
+/* 5. 按钮和点击区域：高度调大至 56px 方便手指点击 */
 .open-btn {
     background-color: #d99a84;
     color: white;
     border: none;
-    height: 56px; /* 加高至56px，更符合触屏点击标准 */
+    height: 56px; 
     width: 100%;
     max-width: 260px;
-    font-size: 18px; /* 按钮文字变大 */
+    font-size: 18px; 
     font-weight: 700;
     border-radius: 28px;
     cursor: pointer;
     box-shadow: 0 6px 20px rgba(217, 154, 132, 0.4);
+    transition: transform 0.1s;
 }
 
 .open-btn:active {
@@ -136,15 +154,16 @@ body {
 }
 
 /* ==========================================
-   2. 沉浸式手机页面容器（100%铺满）
+   四、 手机专属沉浸式内容页（纵向单列流）
    ========================================== */
 .mobile-page-container {
     width: 100%;
     min-height: 100vh;
-    /* 顶部给悬浮音符留出安全距离 */
-    padding: calc(55px + env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom)) 16px;
+    /* 顶部留出悬浮按钮的避让距离，并兼容安全区域 padding */
+    padding: calc(60px + env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom)) 16px;
     background: linear-gradient(to bottom, #fcf8f6 0%, #f7f3f0 100%);
     overflow-y: auto;
+    /* 4. 整体布局：完全单列纵向排列，使用 gap 自动撑开距离 */
     display: flex;
     flex-direction: column;
     gap: 36px; 
@@ -158,19 +177,18 @@ body {
 }
 
 /* ------------------------------------------
-   2.1 写信区域 - 精美实体信纸模版（重点重构）
+   4.1 信纸模版（写信区域）
    ------------------------------------------ */
 .letter-paper {
-    background-color: #fdfaf2; /* 温暖经典的复古米黄信纸底色 */
-    border: 1px solid #ebdcb9; /* 柔和的纸张边缘线 */
+    background-color: #fdfaf2; /* 实体纸张暖黄色 */
+    border: 1px solid #ebdcb9;
     border-radius: 12px;
-    padding: 28px 20px; /* 增加内边距 */
-    box-shadow: 0 6px 20px rgba(181, 159, 148, 0.15); /* 模拟信纸铺在桌面上的轻微投影 */
+    padding: 28px 20px;
+    box-shadow: 0 6px 20px rgba(181, 159, 148, 0.15);
     position: relative;
     overflow: hidden;
 }
 
-/* 信纸顶部的传统复古红色装饰横线 */
 .paper-header-line {
     position: absolute;
     top: 0;
@@ -180,8 +198,9 @@ body {
     background-color: #d99a84;
 }
 
+/* 3. 标题字号放大 */
 .salutation {
-    font-size: 26px; /* 明显放大名字，重点突出 */
+    font-size: 26px; 
     font-weight: 700;
     color: #2b2b2b;
     margin-bottom: 6px;
@@ -199,21 +218,24 @@ body {
     font-weight: 500;
 }
 
+/* 3. 手机端正文放宽：字号 17px，行高 1.9，保证绝佳的可读性 */
 .letter-text {
-    font-size: 17px; /* 放大信件正文字号，更利于在手机上轻松阅读 */
-    line-height: 1.95; /* 增加行距，拒绝紧凑和局促感 */
+    font-size: 17px; 
+    line-height: 1.9; 
     color: #4a4a4a;
     text-align: justify;
-    text-indent: 2em; 
-    white-space: pre-wrap; 
-    letter-spacing: 0.5px; /* 增加字符间距，高级感明显提升 */
+    text-indent: 2em; /* 首行缩进 */
+    white-space: pre-wrap; /* 保持段落换行 */
+    letter-spacing: 0.5px;
 }
 
 /* ------------------------------------------
-   2.2 照片轮播区（手势左右滑动 & 无限多张）
+   4.2 照片滑动区域
    ------------------------------------------ */
 .photo-section {
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .section-title {
@@ -224,7 +246,6 @@ body {
     font-weight: 500;
 }
 
-/* 轮播视口 */
 .carousel-container {
     width: 100%;
     overflow: hidden;
@@ -232,35 +253,36 @@ body {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
-/* 滑动轨道：核心是利用 CSS Native Scroll Snapping 实现无卡顿滑动 */
 .carousel-track {
     display: flex;
     overflow-x: auto;
-    scroll-snap-type: x mandatory; /* 每次滑动都精准定位到一张照片 */
-    -webkit-overflow-scrolling: touch; /* iOS 滑动加速 */
-    scrollbar-width: none; /* 隐藏滚动条 */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 }
 
 .carousel-track::-webkit-scrollbar {
-    display: none; /* 隐藏 Webkit 滚动条 */
+    display: none;
 }
 
-/* 每张照片滑块 */
 .carousel-slide {
-    flex: 0 0 100%; /* 每张照片正好占满屏幕宽度 */
+    flex: 0 0 100%;
     scroll-snap-align: start;
     background-color: #ffffff;
-    padding: 10px 10px 15px 10px; /* 模拟相框效果 */
+    padding: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* 2. 图片自适应：不设置固定像素宽度，确保不超限并保持比例 */
 .carousel-slide img {
+    max-width: 100%;
     width: 100%;
-    aspect-ratio: 4 / 3; /* 经典比例 */
+    height: auto;
     object-fit: cover;
     border-radius: 6px;
+    display: block;
 }
 
 .carousel-slide .caption {
@@ -271,7 +293,6 @@ body {
     font-style: italic;
 }
 
-/* 轮播圆点指示器 */
 .carousel-dots {
     display: flex;
     justify-content: center;
@@ -289,11 +310,11 @@ body {
 
 .dot.active {
     background-color: #d99a84;
-    transform: scale(1.2); /* 激活的小圆点放大显示 */
+    transform: scale(1.2);
 }
 
 /* ------------------------------------------
-   2.3 最后的专属祝福语卡片
+   4.3 最后的专属祝福语卡片
    ------------------------------------------ */
 .blessing-section {
     width: 100%;
@@ -301,14 +322,14 @@ body {
 
 .blessing-card {
     background: rgba(217, 154, 132, 0.08); 
-    border-left: 5px solid #d99a84; /* 加粗边缘立柱 */
+    border-left: 5px solid #d99a84; 
     padding: 24px 20px;
     border-radius: 0 14px 14px 0;
     position: relative;
 }
 
 .quote-mark {
-    font-size: 32px; /* 放大双引号 */
+    font-size: 32px; 
     color: #d99a84;
     font-weight: 700;
     line-height: 1;
@@ -319,8 +340,9 @@ body {
     text-align: right;
 }
 
+/* 3. 祝福字号变大并加行高 */
 .blessing-para {
-    font-size: 16px; /* 祝福语加粗放大 */
+    font-size: 16px; 
     line-height: 1.8;
     color: #333333;
     font-weight: 500;
@@ -345,14 +367,15 @@ body {
 }
 
 /* ==========================================
-   3. 手机悬浮音乐控制按钮（避开右上角菜单）
+   五、 悬浮控制组件（触控优化）
    ========================================== */
+/* 5. 音乐悬浮按钮：宽高放大至 46px 方便手指触控 */
 .music-btn {
     position: fixed;
     top: calc(14px + env(safe-area-inset-top)); 
     right: 16px;
-    width: 42px; /* 稍微放大 */
-    height: 42px;
+    width: 46px; 
+    height: 46px;
     background: rgba(255, 255, 255, 0.95);
     border-radius: 50%;
     display: flex;
@@ -360,6 +383,7 @@ body {
     align-items: center;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
     z-index: 100;
+    cursor: pointer;
 }
 
 .music-btn.show {
@@ -371,7 +395,7 @@ body {
     animation: rotate 4s linear infinite;
 }
 
-/* 动画特效声明 */
+/* 动效 */
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(50px); }
     to { opacity: 1; transform: translateY(0); }
@@ -386,4 +410,9 @@ body {
 @keyframes rotate {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
