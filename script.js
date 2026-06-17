@@ -57,3 +57,4 @@ if (friendId && friendsData[friendId]) {
     blessingElement.innerText = defaultData.message;
     imgElement.src = defaultData.image;
 }
+
