@@ -1,57 +1,154 @@
-/* 全局基础样式 */
+/* 清除手机端默认样式与多余边距 */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    /* 消除手机点击时出现的半透明灰色背景 */
+    -webkit-tap-highlight-color: transparent; 
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    /* 针对 iOS 弹性滚动的优化 */
+    -webkit-overflow-scrolling: touch; 
 }
 
 body {
     font-family: 'Noto Sans SC', -apple-system, sans-serif;
-    background-color: #f7f3f0; /* 温馨的暖白色背景 */
+    background-color: #f7f3f0;
     color: #4a4a4a;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    overflow-x: hidden;
+    /* 适配 iPhone 底部黑条和顶部安全区 */
+    padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom) 16px;
+    overflow: hidden;
     position: relative;
 }
 
-/* 背景毛玻璃光晕效果 */
+/* 手机彩带画布 */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* 手机端背景光晕 */
 .bg-glow {
     position: absolute;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(255, 182, 193, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
-    top: 10%;
-    left: 10%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(255, 182, 193, 0.35) 0%, rgba(255, 255, 255, 0) 70%);
+    top: 5%;
+    left: 5%;
     z-index: 1;
 }
 
-/* 贺卡卡片主体 */
-.card-container {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(163, 137, 137, 0.15); /* 柔和的阴影 */
+.hide {
+    display: none !important;
+    opacity: 0;
+}
+
+/* ==========================================
+   1. 封面页（全屏铺满）
+   ========================================== */
+.welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 400px; /* 限制最大宽度，正好适合手机屏幕 */
+    height: 100%;
+    background: linear-gradient(135deg, #fcebe6 0%, #f7f3f0 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: opacity 0.6s ease;
+    padding: 24px;
+}
+
+.welcome-content {
+    text-align: center;
+    width: 100%;
+    max-width: 320px;
+}
+
+.envelope-icon {
+    font-size: 65px;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+.welcome-content h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.welcome-content p {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 35px;
+}
+
+/* 手机专属易触控按钮 */
+.open-btn {
+    background-color: #d99a84;
+    color: white;
+    border: none;
+    /* 增加高度使指尖更好点击 */
+    height: 50px; 
+    width: 100%;
+    max-width: 240px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(217, 154, 132, 0.35);
+}
+
+.open-btn:active {
+    background-color: #c9856f;
+    transform: scale(0.98); /* 手机按下时的微小物理缩水反馈 */
+}
+
+/* ==========================================
+   2. 卡片页（手机卡片核心）
+   ========================================== */
+.card-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(163, 137, 137, 0.12);
+    width: 100%;
+    max-width: 380px; /* 完美适配主流手机屏幕宽度 */
+    /* 限制卡片最高不能超过屏幕高度的 85%，防止小屏幕手机显示不全 */
+    max-height: 85vh; 
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
     z-index: 2;
-    transition: transform 0.3s ease;
-    animation: fadeIn 1s ease-out; /* 卡片淡入动画 */
+    opacity: 0;
 }
 
-/* 卡片淡入动画效果 */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+.card-container.show {
+    display: flex !important;
+    opacity: 1;
+    animation: slideUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* 图片区域 */
+/* 图片比例适配手机 */
 .image-box {
     width: 100%;
-    height: 250px;
+    /* 采用视口高度比例，小手机也会等比例缩放 */
+    height: 30vh; 
+    min-height: 180px;
+    max-height: 240px;
     overflow: hidden;
     background-color: #eaeaea;
 }
@@ -59,63 +156,103 @@ body {
 .image-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 保证图片在不缩放变形的前提下填满容器 */
-    transition: transform 0.5s ease;
+    object-fit: cover;
 }
 
-/* 鼠标悬停或手机触摸时，图片微微放大 */
-.card-container:hover .image-box img {
-    transform: scale(1.05);
-}
-
-/* 文字内容区域 */
+/* 文字内容滚动区 */
 .content-box {
-    padding: 30px 25px;
+    padding: 24px 20px;
     text-align: center;
+    flex: 1;
+    overflow-y: auto; /* 如果文字很长，卡片内部自动支持上下滑动 */
+    /* 隐藏手机端的滚动条，让视觉更干净 */
+    scrollbar-width: none; 
+}
+.content-box::-webkit-scrollbar {
+    display: none;
 }
 
 #friend-name {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     color: #333333;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
-/* 部门/职位标签样式 */
 .role-tag {
     display: inline-block;
-    font-size: 13px;
+    font-size: 12px;
     color: #9b8a82;
     background-color: #f2ebe7;
-    padding: 3px 12px;
-    border-radius: 12px;
-    margin-bottom: 20px;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-bottom: 16px;
     font-weight: 500;
 }
 
-/* 分割线 */
 .divider {
-    width: 40px;
+    width: 30px;
     height: 2px;
     background-color: #e0d4cf;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 16px auto;
 }
 
-/* 祝福语正文 */
 .message {
-    font-size: 15px;
-    line-height: 1.8;
+    font-size: 14px;
+    line-height: 1.7;
     color: #5a5a5a;
-    text-align: justify; /* 两端对齐，排版更整齐 */
-    margin-bottom: 30px;
-    min-height: 80px;
+    text-align: justify;
+    margin-bottom: 20px;
 }
 
-/* 底部签名 */
 .footer-sign {
-    font-size: 12px;
+    font-size: 11px;
     color: #a0a0a0;
     text-align: right;
-    margin-top: 15px;
+    margin-top: 10px;
     font-style: italic;
+}
+
+/* ==========================================
+   3. 手机音乐按钮
+   ========================================== */
+.music-btn {
+    position: fixed;
+    top: calc(12px + env(safe-area-inset-top)); /* 智能避开刘海屏 */
+    right: 16px;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 100;
+}
+
+.music-btn.show {
+    display: flex !important;
+    opacity: 1;
+}
+
+.music-playing {
+    animation: rotate 4s linear infinite;
+}
+
+/* 动画特效 */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
