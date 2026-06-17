@@ -3,19 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farewell CCMC</title>
-    <!-- 1. 引入我们的 CSS 样式文件 -->
+    <title>Farewell CCMC - 专属纪念</title>
+    <!-- 引入样式 -->
     <link rel="stylesheet" href="style.css">
+    <!-- 引入谷歌字体，让页面排版更好看一点 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
-        <!-- 2. 这是一个占位区域，稍后 JS 逻辑会把识别到的人名填到这里 -->
-        <h1 id="friend-name">正在加载...</h1>
-        <p id="blessing-text">请稍等，正在为您准备专属惊喜...</p>
+    <!-- 背景渐变光晕，增加视觉层次 -->
+    <div class="bg-glow"></div>
+
+    <div class="card-container">
+        <!-- 专属合照/图片区域 -->
+        <div class="image-box">
+            <img id="friend-img" src="" alt="纪念照片">
+        </div>
+
+        <!-- 文字内容区域 -->
+        <div class="content-box">
+            <!-- 朋友的名字 -->
+            <h1 id="friend-name">正在加载...</h1>
+            <!-- 朋友的部门/职位 -->
+            <p id="friend-role" class="role-tag">Loading...</p>
+            
+            <!-- 分割线 -->
+            <div class="divider"></div>
+
+            <!-- 专属祝福语 -->
+            <p id="blessing-text" class="message">
+                正在加载专属您的温馨祝福...
+            </p>
+            
+            <!-- 页面底部签名 -->
+            <div class="footer-sign">
+                <p>—— 来自 CCMC 的全体伙伴</p>
+            </div>
+        </div>
     </div>
 
-    <!-- 3. 引入我们的 JavaScript 脚本文件（放在 body 最下方确保网页先加载出结构） -->
+    <!-- 引入脚本 -->
     <script src="script.js"></script>
 </body>
 </html>
