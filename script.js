@@ -1,12 +1,11 @@
 // ==========================================
-// 1. 名单数据库（完全满足：信件、无限张合照、祝福语）
+// 1. 名单数据库（完全匹配：长信、多图、祝福语结构）
 // ==========================================
 const friendsData = {
     "test1": {
         name: "小明",
         role: "CCMC 设计组",
         letter: "好久不见。还记得你刚加入 CCMC 的时候，还是个略带羞涩的新人。\n在过去的几年里，我们一起熬夜改图，一起为了策划案争论不休，也一起吃过无数顿外卖。谢谢你留下那些精彩又用心的设计，CCMC 的每一个高光时刻都有你的汗水。\n虽然我们要在这里说再见了，但这段共同奋斗的记忆永远都在。祝你在新的旅程中顺顺利利！",
-        // 📷 【多图区域】：在这里用英文逗号隔开，填入任意多张图片链接
         images: [
             "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop",
@@ -26,7 +25,7 @@ const friendsData = {
     }
 };
 
-// 默认兜底页面数据 (已经修复了“双重亲爱的”文字重合Bug)
+// 默认兜底页面数据
 const defaultData = {
     name: "CCMC 伙伴",
     role: "CCMC 大家庭",
@@ -38,7 +37,7 @@ const defaultData = {
 };
 
 // ==========================================
-// 2. 解析网址参数，初始化网页内容
+// 2. 解析 URL 参数并渲染文字内容
 // ==========================================
 const urlParams = new URLSearchParams(window.location.search);
 const friendId = urlParams.get('id');
@@ -49,34 +48,30 @@ const roleElement = document.getElementById('friend-role');
 const letterElement = document.getElementById('letter-content');
 const blessingElement = document.getElementById('blessing-text');
 
-// 匹配数据
 let currentFriend = defaultData;
 if (friendId && friendsData[friendId]) {
     currentFriend = friendsData[friendId];
 }
 
-// 渲染文字内容
-welcomeTitle.innerText = "亲爱的 " + currentFriend.name; // 修复了多重拼接Bug
+// 渲染文字
+welcomeTitle.innerText = "亲爱的 " + currentFriend.name;
 nameElement.innerText = currentFriend.name;
 roleElement.innerText = currentFriend.role;
 letterElement.innerText = currentFriend.letter;
 blessingElement.innerText = currentFriend.blessing;
 
 // ==========================================
-// 3. 动态渲染照片无限轮播轨道与指示点
+// 3. 动态渲染自适应照片滑轨
 // ==========================================
 const carouselTrack = document.getElementById('carousel-track');
 const carouselDots = document.getElementById('carousel-dots');
-
 const imagesArray = currentFriend.images || [];
 
-// 清空默认内容
 carouselTrack.innerHTML = '';
 carouselDots.innerHTML = '';
 
-// 动态创建每一张照片和对应的指示点
 imagesArray.forEach((imgUrl, index) => {
-    // a. 创建照片幻灯片
+    // 创建照片 Slide 节点
     const slide = document.createElement('div');
     slide.className = 'carousel-slide';
     
@@ -84,26 +79,26 @@ imagesArray.forEach((imgUrl, index) => {
     img.src = imgUrl;
     img.alt = `回忆照片 ${index + 1}`;
     
-    // 给照片绑定点击事件 -> 打开全屏原图查看
+    // 照片绑定点击原图查看功能 (优化大图模式)
     img.addEventListener('click', () => {
         openLightbox(imgUrl);
     });
 
     const caption = document.createElement('div');
     caption.className = 'caption';
-    caption.innerText = `❤️ 回忆一角 (${index + 1}/${imagesArray.length})`;
+    caption.innerText = `❤️ 精彩瞬间 (${index + 1}/${imagesArray.length})`;
 
     slide.appendChild(img);
     slide.appendChild(caption);
     carouselTrack.appendChild(slide);
 
-    // b. 创建指示器小圆点
+    // 创建滑动指示圆点
     const dot = document.createElement('div');
     dot.className = `dot ${index === 0 ? 'active' : ''}`;
     carouselDots.appendChild(dot);
 });
 
-// 监听滑动事件，使下方小圆点和当前滑动的照片完美同步
+// 监听移动端手势滑动
 carouselTrack.addEventListener('scroll', () => {
     const width = carouselTrack.clientWidth;
     const index = Math.round(carouselTrack.scrollLeft / width);
@@ -119,7 +114,7 @@ carouselTrack.addEventListener('scroll', () => {
 });
 
 // ==========================================
-// 4. 原图查看器（Lightbox）触发逻辑
+// 4. 原图查看器 (Lightbox) 交互
 // ==========================================
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
@@ -134,7 +129,7 @@ lightbox.addEventListener('click', () => {
 });
 
 // ==========================================
-// 5. 封面转场与背景音乐
+// 5. 封面转场及音乐控制
 // ==========================================
 const welcomeScreen = document.getElementById('welcome-screen');
 const cardScreen = document.getElementById('card-screen');
@@ -143,9 +138,10 @@ const musicBtn = document.getElementById('music-btn');
 const bgMusic = document.getElementById('bg-music');
 
 openBtn.addEventListener('click', () => {
+    // 手机端在交互后播放音乐
     bgMusic.play().then(() => {
         musicBtn.classList.add('music-playing');
-    }).catch(err => console.log("音乐播不受阻:", err));
+    }).catch(err => console.log("音频加载中或浏览器策略拦截:", err));
 
     welcomeScreen.style.opacity = '0';
     setTimeout(() => {
@@ -174,7 +170,7 @@ musicBtn.addEventListener('click', () => {
 });
 
 // ==========================================
-// 6. 彩带雨逻辑
+// 6. 彩带雨动画效果
 // ==========================================
 function startConfetti() {
     const canvas = document.getElementById("confetti-canvas");
