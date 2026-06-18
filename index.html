@@ -2,40 +2,30 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <!-- 1. 添加标准视口标签，适配各种手机屏幕，并优化 iOS 安全区域 (viewport-fit=cover) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Farewell CCMC - 专属纪念</title>
-    <!-- 引入样式 -->
-    <link rel="stylesheet" href="style.css">
-    <!-- 引入适合手机阅读的谷歌字体 -->
+    <!-- 注意：为了适配 Clean URL，这里必须使用以仓库名开头的绝对路径 -->
+    <link rel="stylesheet" href="/Farewell_CCMC/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- 绘制彩带雨效果的画布 -->
     <canvas id="confetti-canvas"></canvas>
-
-    <!-- 背景渐变光晕 -->
     <div class="bg-glow"></div>
 
-    <!-- 背景音乐 -->
     <audio id="bg-music" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
     </audio>
 
-    <!-- 手机悬浮音乐控制按钮（触控区域已优化至 46px） -->
     <div id="music-btn" class="music-btn hide">
         <span class="music-icon">🎵</span>
     </div>
 
-    <!-- 大图查看弹窗 (Lightbox) -->
     <div id="lightbox" class="lightbox hide">
         <img id="lightbox-img" src="" alt="大图查看">
     </div>
 
-    <!-- ==========================================
-       一、 手机封面入口页（单列纵向布局）
-       ========================================== -->
+    <!-- 1. 封面入口页 -->
     <div id="welcome-screen" class="welcome-screen">
         <div class="welcome-content">
             <div class="envelope-wrapper">
@@ -47,36 +37,26 @@
         </div>
     </div>
 
-    <!-- ==========================================
-       二、 沉浸式移动贺卡页（纯手机单列纵向流排版）
-       ========================================== -->
+    <!-- 2. 全屏沉浸式移动贺卡页 -->
     <div id="card-screen" class="mobile-page-container hide">
         
-        <!-- 1. 信纸模版（写信区域） -->
         <div class="letter-paper">
             <div class="paper-header-line"></div>
             <h2 class="salutation">亲爱的 <span id="friend-name"></span>：</h2>
             <p id="friend-role" class="role-tag"></p>
-            
-            <!-- 信件正文（支持段落与自动换行） -->
             <div id="letter-content" class="letter-text"></div>
         </div>
 
-        <!-- 2. 照片滑动区域（支持无限多张、手势左右滑动） -->
         <div class="photo-section">
             <h3 class="section-title">✨ 我们的精彩瞬间 (左右滑动)</h3>
-            
             <div class="carousel-container">
                 <div id="carousel-track" class="carousel-track">
-                    <!-- 照片将由 Javascript 动态塞入 -->
+                    <!-- 照片由 JS 动态加载 -->
                 </div>
             </div>
-            
-            <!-- 幻灯片小圆点 -->
             <div id="carousel-dots" class="carousel-dots"></div>
         </div>
 
-        <!-- 3. 最后的专属祝福语 -->
         <div class="blessing-section">
             <div class="blessing-card">
                 <span class="quote-mark">“</span>
@@ -85,7 +65,6 @@
             </div>
         </div>
 
-        <!-- 4. 底部签名区 -->
         <div class="footer-sign">
             <p>愿你前途似锦，常回家看看</p>
             <p class="sign-name">—— CCMC 全体伙伴 敬上</p>
@@ -93,6 +72,7 @@
         
     </div>
 
-    <script src="script.js"></script>
+    <!-- 注意：为了适配 Clean URL，这里必须使用绝对路径 -->
+    <script src="/Farewell_CCMC/script.js"></script>
 </body>
 </html>
