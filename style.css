@@ -215,7 +215,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* 4.2 照片滑动区域 */
+/* 4.2 照片轮播区（已新增左右控制按键排版） */
 .photo-section {
     width: 100%;
     display: flex;
@@ -228,14 +228,11 @@ body {
     margin-bottom: 14px;
     text-align: center;
     font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
 }
 
 .carousel-container {
     width: 100%;
+    position: relative; /* 核心：开启相对定位，好定位左右控制按钮 */
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -280,6 +277,40 @@ body {
     font-style: italic;
 }
 
+/* 左右轮播控制按键 */
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.85); /* 稍微透明的极简白 */
+    border: 1px solid #ebdcb9; /* 精致米黄色细边框 */
+    color: #d99a84;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 12px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* 极轻阴影 */
+    transition: background-color 0.2s;
+}
+
+.carousel-nav-btn:active {
+    background-color: #fcfbfc;
+}
+
+.carousel-nav-btn.prev {
+    left: 8px; /* 贴近左侧 */
+}
+
+.carousel-nav-btn.next {
+    right: 8px; /* 贴近右侧 */
+}
+
 .carousel-dots {
     display: flex;
     justify-content: center;
@@ -300,9 +331,7 @@ body {
     transform: scale(1.2);
 }
 
-/* ------------------------------------------
-   4.3 ⌛ 时间胶囊专属样式
-   ------------------------------------------ */
+/* 4.3 ⌛ 时间胶囊专属样式 */
 .capsule-section {
     width: 100%;
 }
@@ -380,7 +409,6 @@ body {
     transform: scale(0.97);
 }
 
-/* 时间胶囊信纸排版 */
 .capsule-letter-paper {
     background-color: #fcfcfc;
     border-left: 4px solid #576574;
@@ -405,9 +433,7 @@ body {
     white-space: pre-wrap;
 }
 
-/* ------------------------------------------
-   4.4 🤫 匿名留言墙专属样式
-   ------------------------------------------ */
+/* 4.4 🤫 匿名留言墙专属样式 */
 .message-wall-section {
     width: 100%;
 }
@@ -470,9 +496,7 @@ body {
     transform: scale(0.98);
 }
 
-/* ------------------------------------------
-   4.5 最后的专属祝福语卡片
-   ------------------------------------------ */
+/* 4.5 最后的专属祝福语卡片 */
 .blessing-section {
     width: 100%;
 }
@@ -523,53 +547,46 @@ body {
 }
 
 /* ==========================================
-   五、 悬浮控制组件（1.25x 触控放大与返回键）
+   五、 悬浮控制组件 (3. 扁平极简风、加米黄边框、无阴影)
    ========================================== */
-/* 5.1 返回按钮 */
+.back-btn, .music-btn {
+    position: fixed;
+    top: calc(14px + env(safe-area-inset-top)); 
+    width: 44px; /* 精简尺寸 */
+    height: 44px;
+    background: rgba(255, 255, 255, 0.95); /* 扁平白 */
+    border: 1px solid #ebdcb9; /* 优雅的米黄细线边框 */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none; /* 彻底去除厚重立体投影 */
+    z-index: 100;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.back-btn:active, .music-btn:active {
+    background-color: #fdfbfc; /* 触模按下时变微浅白反馈 */
+}
+
+/* 左上角返回位置 */
 .back-btn {
-    position: fixed;
-    top: calc(14px + env(safe-area-inset-top)); 
-    left: 16px;
-    width: 48px; 
-    height: 48px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-    cursor: pointer;
+    left: 16px; 
 }
 
-.back-icon {
-    font-size: 20px;
-}
-
-/* 5.2 音乐按钮（放大 1.25 倍：从 42px 放大到 52px） */
+/* 右上角音乐位置 */
 .music-btn {
-    position: fixed;
-    top: calc(14px + env(safe-area-inset-top)); 
     right: 16px;
-    width: 52px; 
-    height: 52px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-    cursor: pointer;
 }
 
-.music-btn.show {
-    display: flex !important;
-    opacity: 1;
+.back-icon, .music-icon {
+    font-size: 18px; /* 适当调小，精巧紧凑 */
+    color: #d99a84;
 }
 
 .music-playing {
-    animation: rotate 4s linear infinite;
+    animation: rotate 4s linear infinite; /* 依旧保留轻轻旋转，提示正在播歌 */
 }
 
 /* 动画特效声明 */
