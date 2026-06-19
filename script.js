@@ -6,13 +6,11 @@ const friendsData = {
         name: "Eric",
         role: "Tom",
         letter: "好久不见。Eric，谢谢你一直以来对我的支持！\n在过去的时光里，我们一起经历了很多有趣的事情。希望这封卡片能带给你一点小惊喜，也祝你未来的路越走越宽广！",
-        // 📷 默认放入 3 张高清测试照片，支持轮播滑动
         images: [
             "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&auto=format&fit=crop"
         ],
-        // ⏳ 7月31号 晚上11点59分 才能打开的专属信
         capsuleLetter: "Eric，这是我写在时间胶囊里的一封密信。\n有些话平时不好意思当面说，但到了这一刻，真的非常感谢你！祝你万事顺遂！",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
@@ -268,7 +266,9 @@ const defaultData = {
     role: "Tom",
     letter: "非常感谢你一直以来对 CCMC 的支持与付出！这里凝聚了大家共同的回忆与汗水。\n虽然这里可能没有展示针对您个人的专属信件，但我们同样珍视与你共处的每一天。祝你前路顺遂，一切皆好！",
     images: [
-        "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop"
+        "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600",
+        "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"
     ],
     capsuleLetter: "时间胶囊已解锁！感谢 CCMC 大家庭中每一个努力闪光的你，愿你未来一帆风顺！",
     blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -306,13 +306,12 @@ document.getElementById('redirect-url').value = window.location.href + (window.l
 // ==========================================
 if (urlParams.get('sent') === 'true') {
     alert("留言发送成功！Tom 会在邮箱里收到你的悄悄话 🤫");
-    // 清除网址后缀中的 &sent=true 标识，防止用户手动刷新页面时重复弹窗
     const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search.replace(/[?&]sent=true/, '');
     window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
 }
 
 // ==========================================
-// 4. 动态渲染自适应照片滑轨 (3张测试照片)
+// 4. 动态渲染自适应照片滑轨与左右按键逻辑
 // ==========================================
 const carouselTrack = document.getElementById('carousel-track');
 const carouselDots = document.getElementById('carousel-dots');
@@ -349,6 +348,24 @@ imagesArray.forEach((imgUrl, index) => {
     dot.className = `dot ${index === 0 ? 'active' : ''}`;
     carouselDots.appendChild(dot);
 });
+
+// 新增：给照片添加左右点击控制按钮的事件监听 [1]
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+
+if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+        const width = carouselTrack.clientWidth;
+        // 顺滑向左滚动一张照片的宽度
+        carouselTrack.scrollBy({ left: -width, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+        const width = carouselTrack.clientWidth;
+        // 顺滑向右滚动一张照片的宽度
+        carouselTrack.scrollBy({ left: width, behavior: 'smooth' });
+    });
+}
 
 carouselTrack.addEventListener('scroll', () => {
     const width = carouselTrack.clientWidth;
@@ -389,7 +406,6 @@ const backBtn = document.getElementById('back-btn');
 const musicBtn = document.getElementById('music-btn');
 const bgMusic = document.getElementById('bg-music');
 
-// A. 点击“开启惊喜”
 openBtn.addEventListener('click', () => {
     bgMusic.play().then(() => {
         musicBtn.classList.add('music-playing');
@@ -404,7 +420,6 @@ openBtn.addEventListener('click', () => {
             cardScreen.classList.add('show');
         }, 50);
 
-        // 呈现音乐按键和左上角的返回按钮
         musicBtn.classList.remove('hide');
         musicBtn.classList.add('show');
         backBtn.classList.remove('hide');
@@ -414,9 +429,7 @@ openBtn.addEventListener('click', () => {
     startConfetti();
 });
 
-// B. 新增：点击左上角“返回封面”按钮
 backBtn.addEventListener('click', () => {
-    // 隐藏返回键、音乐控制按钮和卡片
     backBtn.classList.add('hide');
     musicBtn.classList.add('hide');
     cardScreen.style.opacity = '0';
@@ -424,9 +437,8 @@ backBtn.addEventListener('click', () => {
     setTimeout(() => {
         cardScreen.classList.add('hide');
         cardScreen.classList.remove('show');
-        cardScreen.style.opacity = ''; // 还原
+        cardScreen.style.opacity = ''; 
         
-        // 呈现并渐渐淡入封面页
         welcomeScreen.classList.remove('hide');
         setTimeout(() => {
             welcomeScreen.style.opacity = '1';
@@ -434,7 +446,6 @@ backBtn.addEventListener('click', () => {
     }, 600);
 });
 
-// C. 悬浮音乐按钮控制
 musicBtn.addEventListener('click', () => {
     if (bgMusic.paused) {
         bgMusic.play();
@@ -448,7 +459,6 @@ musicBtn.addEventListener('click', () => {
 // ==========================================
 // 7. ⏳ 时间胶囊逻辑（7月31号 晚上11点59分 开启）
 // ==========================================
-// 锁定时间：2026年7月31日 23时59分00秒
 const targetDate = new Date("2026-07-31T23:59:00").getTime();
 
 function updateCountdown() {
@@ -458,7 +468,6 @@ function updateCountdown() {
     if (!container) return;
 
     if (diff > 0) {
-        // 如果还未到设定的解锁时间，显示锁闭状态与精确倒计时
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -473,7 +482,6 @@ function updateCountdown() {
             </div>
         `;
     } else {
-        // 到了解锁时间，自动显示解开的钥匙和点击开启的按钮
         if (!container.classList.contains('unlocked-open')) {
             container.innerHTML = `
                 <div class="unlocked-capsule">
@@ -498,7 +506,6 @@ function updateCountdown() {
         }
     }
 }
-// 每一秒刷新一次倒计时
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
