@@ -151,7 +151,7 @@ body {
 .mobile-page-container {
     width: 100%;
     min-height: 100vh;
-    padding: calc(60px + env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom)) 16px;
+    padding: calc(65px + env(safe-area-inset-top)) 16px calc(45px + env(safe-area-inset-bottom)) 16px;
     background: linear-gradient(to bottom, #fcf8f6 0%, #f7f3f0 100%);
     overflow-y: auto;
     display: flex;
@@ -223,11 +223,15 @@ body {
 }
 
 .section-title {
-    font-size: 15px;
-    color: #888888;
-    margin-bottom: 12px;
+    font-size: 16px;
+    color: #6e6560;
+    margin-bottom: 14px;
     text-align: center;
-    font-weight: 500;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 }
 
 .carousel-container {
@@ -296,7 +300,179 @@ body {
     transform: scale(1.2);
 }
 
-/* 4.3 最后的专属祝福语卡片 */
+/* ------------------------------------------
+   4.3 ⌛ 时间胶囊专属样式
+   ------------------------------------------ */
+.capsule-section {
+    width: 100%;
+}
+
+.capsule-card {
+    background-color: #ffffff;
+    border: 2px dashed #ebdcb9;
+    border-radius: 12px;
+    padding: 24px 16px;
+    box-shadow: 0 6px 15px rgba(181, 159, 148, 0.08);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.locked-capsule {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lock-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+    animation: pulse 2s infinite;
+}
+
+.capsule-status-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+.countdown-timer {
+    font-size: 20px;
+    font-weight: 700;
+    color: #d99a84;
+    background-color: #fdfbfc;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid #ebdcb9;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.capsule-notice {
+    font-size: 12px;
+    color: #999;
+}
+
+.unlocked-capsule {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.open-lock {
+    animation: none;
+    color: #2ed573;
+}
+
+.open-capsule-btn {
+    background-color: #576574;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(87, 101, 116, 0.3);
+}
+
+.open-capsule-btn:active {
+    transform: scale(0.97);
+}
+
+/* 时间胶囊信纸排版 */
+.capsule-letter-paper {
+    background-color: #fcfcfc;
+    border-left: 4px solid #576574;
+    border-radius: 0 8px 8px 0;
+    padding: 16px;
+    text-align: left;
+    animation: zoomIn 0.5s ease;
+}
+
+.capsule-paper-header {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 6px;
+}
+
+.capsule-letter-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    white-space: pre-wrap;
+}
+
+/* ------------------------------------------
+   4.4 🤫 匿名留言墙专属样式
+   ------------------------------------------ */
+.message-wall-section {
+    width: 100%;
+}
+
+.message-wall-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px 16px;
+    box-shadow: 0 6px 15px rgba(181, 159, 148, 0.08);
+    border: 1px solid #f1ece9;
+}
+
+.wall-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #777;
+    margin-bottom: 16px;
+    text-align: justify;
+}
+
+.message-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.message-input {
+    width: 100%;
+    height: 100px;
+    border: 1px solid #ebdcb9;
+    background-color: #fdfbfc;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 15px;
+    font-family: inherit;
+    color: #444;
+    resize: none;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.message-input:focus {
+    border-color: #d99a84;
+}
+
+.submit-msg-btn {
+    background-color: #d99a84;
+    color: white;
+    border: none;
+    height: 46px;
+    border-radius: 23px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(217, 154, 132, 0.25);
+}
+
+.submit-msg-btn:active {
+    background-color: #c9856f;
+    transform: scale(0.98);
+}
+
+/* ------------------------------------------
+   4.5 最后的专属祝福语卡片
+   ------------------------------------------ */
 .blessing-section {
     width: 100%;
 }
@@ -346,13 +522,37 @@ body {
     font-size: 15px;
 }
 
-/* 五、 悬浮控制组件 */
+/* ==========================================
+   五、 悬浮控制组件（1.25x 触控放大与返回键）
+   ========================================== */
+/* 5.1 返回按钮 */
+.back-btn {
+    position: fixed;
+    top: calc(14px + env(safe-area-inset-top)); 
+    left: 16px;
+    width: 48px; 
+    height: 48px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    cursor: pointer;
+}
+
+.back-icon {
+    font-size: 20px;
+}
+
+/* 5.2 音乐按钮（放大 1.25 倍：从 42px 放大到 52px） */
 .music-btn {
     position: fixed;
     top: calc(14px + env(safe-area-inset-top)); 
     right: 16px;
-    width: 46px; 
-    height: 46px;
+    width: 52px; 
+    height: 52px;
     background: rgba(255, 255, 255, 0.95);
     border-radius: 50%;
     display: flex;
@@ -372,7 +572,7 @@ body {
     animation: rotate 4s linear infinite;
 }
 
-/* 动效 */
+/* 动画特效声明 */
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(50px); }
     to { opacity: 1; transform: translateY(0); }
