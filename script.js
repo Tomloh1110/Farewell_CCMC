@@ -1,233 +1,277 @@
 // ==========================================
-// 1. 31位朋友的完整名单数据库 (相对图片路径)
+// 1. 31位朋友的完整名单数据库 (含3张测试照片与时间胶囊信件)
 // ==========================================
 const friendsData = {
     "eric": {
         name: "Eric",
-        role: "CCMC 伙伴",
-        letter: "写给 Eric 的长信内容……\n在代码里使用 '\\n' 可以实现换行哦！",
-        images: ["images/eric.jpg", "images/eric_2.jpg"], // 可以放多张，默认用相对路径
-        blessing: "祝你未来的路越走越宽广！前途似锦！"
+        role: "Tom",
+        letter: "好久不见。Eric，谢谢你一直以来对我的支持！\n在过去的时光里，我们一起经历了很多有趣的事情。希望这封卡片能带给你一点小惊喜，也祝你未来的路越走越宽广！",
+        // 📷 默认放入 3 张高清测试照片，支持轮播滑动
+        images: [
+            "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&auto=format&fit=crop"
+        ],
+        // ⏳ 7月31号 晚上11点59分 才能打开的专属信
+        capsuleLetter: "Eric，这是我写在时间胶囊里的一封密信。\n有些话平时不好意思当面说，但到了这一刻，真的非常感谢你！祝你万事顺遂！",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "kelvin": {
         name: "Kelvin",
-        role: "CCMC 伙伴",
-        letter: "写给 Kelvin 的长信内容……",
-        images: ["images/kelvin.jpg"],
-        blessing: "最后，祝你天天开心，所得皆所愿！"
+        role: "Tom",
+        letter: "Kelvin，很高兴能在这里为你写下这段专属内容。希望我们未来的日子都充满阳光！",
+        images: [
+            "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&auto=format&fit=crop"
+        ],
+        capsuleLetter: "Kelvin，时间胶囊打开了。感谢你一路的陪伴，愿我们顶峰相见！",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "gloria": {
         name: "Gloria",
-        role: "CCMC 伙伴",
-        letter: "写给 Gloria 的长信内容……",
-        images: ["images/gloria.jpg"],
-        blessing: "祝你未来人生道路平坦，常回家看看！"
+        role: "Tom",
+        letter: "写给 Gloria 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Gloria，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "abner": {
         name: "Abner",
-        role: "CCMC 伙伴",
-        letter: "写给 Abner 的长信内容……",
-        images: ["images/abner.jpg"],
-        blessing: "最后，祝你未来一切顺利，天天都有好心情！"
+        role: "Tom",
+        letter: "写给 Abner 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Abner，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "emily": {
         name: "Emily",
-        role: "CCMC 伙伴",
-        letter: "写给 Emily 的长信内容……",
-        images: ["images/emily.jpg"],
-        blessing: "最后，祝你心想事成，万事顺遂！"
+        role: "Tom",
+        letter: "写给 Emily 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Emily，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "henry": {
         name: "Henry",
-        role: "CCMC 伙伴",
-        letter: "写给 Henry 的长信内容……",
-        images: ["images/henry.jpg"],
-        blessing: "祝你一往无前，未来发光发热！"
+        role: "Tom",
+        letter: "写给 Henry 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Henry，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "joseph": {
         name: "Joseph",
-        role: "CCMC 伙伴",
-        letter: "写给 Joseph 的长信内容……",
-        images: ["images/joseph.jpg"],
-        blessing: "最后，祝你生活愉快，前程似锦！"
+        role: "Tom",
+        letter: "写给 Joseph 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Joseph，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "changzhe": {
         name: "Chang Zhe",
-        role: "CCMC 伙伴",
-        letter: "写给 Chang Zhe 的长信内容……",
-        images: ["images/changzhe.jpg"],
-        blessing: "最后，祝你新的旅程一切顺利，所得皆所愿！"
+        role: "Tom",
+        letter: "写给 Chang Zhe 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Chang Zhe，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "zhechee": {
         name: "Zhe Chee",
-        role: "CCMC 伙伴",
-        letter: "写给 Zhe Chee 的长信内容……",
-        images: ["images/zhechee.jpg"],
-        blessing: "最后，祝你天天开心，所得皆所愿！"
+        role: "Tom",
+        letter: "写给 Zhe Chee 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Zhe Chee，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "kenxiong": {
         name: "Ken Xiong",
-        role: "CCMC 伙伴",
-        letter: "写给 Ken Xiong 的长信内容……",
-        images: ["images/kenxiong.jpg"],
-        blessing: "最后，祝你未来人生道路平坦，万事顺利！"
+        role: "Tom",
+        letter: "写给 Ken Xiong 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Ken Xiong，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "phoebe": {
         name: "Phoebe",
-        role: "CCMC 伙伴",
-        letter: "写给 Phoebe 的长信内容……",
-        images: ["images/phoebe.jpg"],
-        blessing: "最后，祝你新的旅程充满阳光和好心情！"
+        role: "Tom",
+        letter: "写给 Phoebe 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Phoebe，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "shinrou": {
         name: "ShinRou",
-        role: "CCMC 伙伴",
-        letter: "写给 ShinRou 的长信内容……",
-        images: ["images/shinrou.jpg"],
-        blessing: "最后，祝你新的旅程一切顺利，天天开心！"
+        role: "Tom",
+        letter: "写给 ShinRou 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "ShinRou，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "yeexuan": {
         name: "Yee Xuan",
-        role: "CCMC 伙伴",
-        letter: "写给 Yee Xuan 的长信内容……",
-        images: ["images/yeexuan.jpg"],
-        blessing: "最后，祝你心想事成，万事顺遂！"
+        role: "Tom",
+        letter: "写给 Yee Xuan 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Yee Xuan，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "natalie": {
         name: "Natalie",
-        role: "CCMC 伙伴",
-        letter: "写给 Natalie 的长信内容……",
-        images: ["images/natalie.jpg"],
-        blessing: "最后，祝你天天开心，所得皆所愿！"
+        role: "Tom",
+        letter: "写给 Natalie 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Natalie，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "ziwei": {
         name: "Zi Wei",
-        role: "CCMC 伙伴",
-        letter: "写给 Zi Wei 的长信内容……",
-        images: ["images/ziwei.jpg"],
-        blessing: "祝你未来人生道路平坦，前路顺遂！"
+        role: "Tom",
+        letter: "写给 Zi Wei 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Zi Wei，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "adrian": {
         name: "Adrian",
-        role: "CCMC 伙伴",
-        letter: "写给 Adrian 的长信内容……",
-        images: ["images/adrian.jpg"],
-        blessing: "最后，祝你新的旅程一切顺利，天天开心！"
+        role: "Tom",
+        letter: "写给 Adrian 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Adrian，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "yongjun": {
         name: "Yong Jun",
-        role: "CCMC 伙伴",
-        letter: "写给 Yong Jun 的长信内容……",
-        images: ["images/yongjun.jpg"],
-        blessing: "祝你一往无前，未来发光发热！"
+        role: "Tom",
+        letter: "写给 Yong Jun 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Yong Jun，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "jiayao": {
         name: "Jia Yao",
-        role: "CCMC 伙伴",
-        letter: "写给 Jia Yao 的长信内容……",
-        images: ["images/jiayao.jpg"],
-        blessing: "最后，祝你未来一切顺利，天天都有好心情！"
+        role: "Tom",
+        letter: "写给 Jia Yao 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Jia Yao，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "ennis": {
         name: "Ennis",
-        role: "CCMC 伙伴",
-        letter: "写给 Ennis 的长信内容……",
-        images: ["images/ennis.jpg"],
-        blessing: "最后，祝你生活愉快，前程似锦！"
+        role: "Tom",
+        letter: "写给 Ennis 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Ennis，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "shirley": {
         name: "Shirley",
-        role: "CCMC 伙伴",
-        letter: "写给 Shirley 的长信内容……",
-        images: ["images/shirley.jpg"],
-        blessing: "祝你未来人生道路平坦，常回家看看！"
+        role: "Tom",
+        letter: "写给 Shirley 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Shirley，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "yanyan": {
         name: "Yan Yan",
-        role: "CCMC 伙伴",
-        letter: "写给 Yan Yan 的长信内容……",
-        images: ["images/yanyan.jpg"],
-        blessing: "最后，祝你天天开心，所得皆所愿！"
+        role: "Tom",
+        letter: "写给 Yan Yan 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Yan Yan，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "hueichien": {
         name: "Huei Chien",
-        role: "CCMC 伙伴",
-        letter: "写给 Huei Chien 的长信内容……",
-        images: ["images/hueichien.jpg"],
-        blessing: "最后，祝你新的旅程一切顺利，天天开心！"
+        role: "Tom",
+        letter: "写给 Huei Chien 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Huei Chien，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "justin": {
         name: "Justin",
-        role: "CCMC 伙伴",
-        letter: "写给 Justin 的长信内容……",
-        images: ["images/justin.jpg"],
-        blessing: "最后，祝你心想事成，万事顺遂！"
+        role: "Tom",
+        letter: "写给 Justin 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Justin，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "dunxiang": {
         name: "Dun Xiang",
-        role: "CCMC 伙伴",
-        letter: "写给 Dun Xiang 的长信内容……",
-        images: ["images/dunxiang.jpg"],
-        blessing: "祝你一往无前，未来发光发热！"
+        role: "Tom",
+        letter: "写给 Dun Xiang 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Dun Xiang，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "kelly": {
         name: "Kelly",
-        role: "CCMC 伙伴",
-        letter: "写给 Kelly 的长信内容……",
-        images: ["images/kelly.jpg"],
-        blessing: "最后，祝你未来一切顺利，天天都有好心情！"
+        role: "Tom",
+        letter: "写给 Kelly 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Kelly，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "weien": {
         name: "Wei En",
-        role: "CCMC 伙伴",
-        letter: "写给 Wei En 的长信内容……",
-        images: ["images/weien.jpg"],
-        blessing: "最后，祝你新的旅程一切顺利，天天开心！"
+        role: "Tom",
+        letter: "写给 Wei En 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Wei En，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "lydia": {
         name: "Lydia",
-        role: "CCMC 伙伴",
-        letter: "写给 Lydia 的长信内容……",
-        images: ["images/lydia.jpg"],
-        blessing: "最后，祝你生活愉快，前程似锦！"
+        role: "Tom",
+        letter: "写给 Lydia 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Lydia，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "kianqiang": {
         name: "Kian Qiang",
-        role: "CCMC 伙伴",
-        letter: "写给 Kian Qiang 的长信内容……",
-        images: ["images/kianqiang.jpg"],
-        blessing: "最后，祝你天天开心，所得皆所愿！"
+        role: "Tom",
+        letter: "写给 Kian Qiang 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Kian Qiang，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "jingxi": {
         name: "Jing Xi",
-        role: "CCMC 伙伴",
-        letter: "写给 Jing Xi 的长信内容……",
-        images: ["images/jingxi.jpg"],
-        blessing: "祝你未来人生道路平坦，前路顺遂！"
+        role: "Tom",
+        letter: "写给 Jing Xi 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Jing Xi，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "angelina": {
         name: "Angelina",
-        role: "CCMC 伙伴",
-        letter: "写给 Angelina 的长信内容……",
-        images: ["images/angelina.jpg"],
-        blessing: "最后，祝你新的旅程一切顺利，天天开心！"
+        role: "Tom",
+        letter: "写给 Angelina 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Angelina，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "junping": {
         name: "Jun Ping",
-        role: "CCMC 伙伴",
-        letter: "写给 Jun Ping 的长信内容……",
-        images: ["images/junping.jpg"],
-        blessing: "最后，祝你未来一切顺利，天天都有好心情！"
+        role: "Tom",
+        letter: "写给 Jun Ping 的信件内容...",
+        images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
+        capsuleLetter: "Jun Ping，时间胶囊已解锁！写给你的悄悄话...",
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     }
 };
 
 // 默认首页面数据
 const defaultData = {
     name: "CCMC 伙伴",
-    role: "CCMC 大家庭",
+    role: "Tom",
     letter: "非常感谢你一直以来对 CCMC 的支持与付出！这里凝聚了大家共同的回忆与汗水。\n虽然这里可能没有展示针对您个人的专属信件，但我们同样珍视与你共处的每一天。祝你前路顺遂，一切皆好！",
-    images: ["images/default.jpg"],
-    blessing: "最后，祝你未来人生道路平坦，常回家看看，CCMC 永远是你的港湾！"
+    images: [
+        "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop"
+    ],
+    capsuleLetter: "时间胶囊已解锁！感谢 CCMC 大家庭中每一个努力闪光的你，愿你未来一帆风顺！",
+    blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
 };
 
 // ==========================================
@@ -254,8 +298,21 @@ roleElement.innerText = currentFriend.role;
 letterElement.innerText = currentFriend.letter;
 blessingElement.innerText = currentFriend.blessing;
 
+// 设置悄悄话提交表单成功后的重定向网页链接，以便发送成功后返回
+document.getElementById('redirect-url').value = window.location.href + (window.location.search ? '&sent=true' : '?sent=true');
+
 // ==========================================
-// 3. 动态渲染自适应照片滑轨
+// 3. 检测是否成功提交了悄悄话留言
+// ==========================================
+if (urlParams.get('sent') === 'true') {
+    alert("留言发送成功！Tom 会在邮箱里收到你的悄悄话 🤫");
+    // 清除网址后缀中的 &sent=true 标识，防止用户手动刷新页面时重复弹窗
+    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search.replace(/[?&]sent=true/, '');
+    window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
+}
+
+// ==========================================
+// 4. 动态渲染自适应照片滑轨 (3张测试照片)
 // ==========================================
 const carouselTrack = document.getElementById('carousel-track');
 const carouselDots = document.getElementById('carousel-dots');
@@ -272,7 +329,6 @@ imagesArray.forEach((imgUrl, index) => {
     img.src = imgUrl;
     img.alt = `回忆照片 ${index + 1}`;
     
-    // 图片加载失败时隐藏此卡片 (防止显示红叉)
     img.onerror = () => {
         slide.style.display = 'none';
     };
@@ -309,7 +365,7 @@ carouselTrack.addEventListener('scroll', () => {
 });
 
 // ==========================================
-// 4. 原图查看器 (Lightbox) 交互
+// 5. 原图查看器 (Lightbox) 交互
 // ==========================================
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
@@ -324,18 +380,20 @@ lightbox.addEventListener('click', () => {
 });
 
 // ==========================================
-// 5. 封面转场及音乐控制
+// 6. 封面转场、返回封面及音乐控制逻辑
 // ==========================================
 const welcomeScreen = document.getElementById('welcome-screen');
 const cardScreen = document.getElementById('card-screen');
 const openBtn = document.getElementById('open-btn');
+const backBtn = document.getElementById('back-btn');
 const musicBtn = document.getElementById('music-btn');
 const bgMusic = document.getElementById('bg-music');
 
+// A. 点击“开启惊喜”
 openBtn.addEventListener('click', () => {
     bgMusic.play().then(() => {
         musicBtn.classList.add('music-playing');
-    }).catch(err => console.log("音频播放:", err));
+    }).catch(err => console.log("音频播放受到限制:", err));
 
     welcomeScreen.style.opacity = '0';
     setTimeout(() => {
@@ -346,13 +404,37 @@ openBtn.addEventListener('click', () => {
             cardScreen.classList.add('show');
         }, 50);
 
+        // 呈现音乐按键和左上角的返回按钮
         musicBtn.classList.remove('hide');
         musicBtn.classList.add('show');
+        backBtn.classList.remove('hide');
+        backBtn.classList.add('show');
     }, 600);
 
     startConfetti();
 });
 
+// B. 新增：点击左上角“返回封面”按钮
+backBtn.addEventListener('click', () => {
+    // 隐藏返回键、音乐控制按钮和卡片
+    backBtn.classList.add('hide');
+    musicBtn.classList.add('hide');
+    cardScreen.style.opacity = '0';
+    
+    setTimeout(() => {
+        cardScreen.classList.add('hide');
+        cardScreen.classList.remove('show');
+        cardScreen.style.opacity = ''; // 还原
+        
+        // 呈现并渐渐淡入封面页
+        welcomeScreen.classList.remove('hide');
+        setTimeout(() => {
+            welcomeScreen.style.opacity = '1';
+        }, 50);
+    }, 600);
+});
+
+// C. 悬浮音乐按钮控制
 musicBtn.addEventListener('click', () => {
     if (bgMusic.paused) {
         bgMusic.play();
@@ -364,7 +446,64 @@ musicBtn.addEventListener('click', () => {
 });
 
 // ==========================================
-// 6. 彩带雨动画效果
+// 7. ⏳ 时间胶囊逻辑（7月31号 晚上11点59分 开启）
+// ==========================================
+// 锁定时间：2026年7月31日 23时59分00秒
+const targetDate = new Date("2026-07-31T23:59:00").getTime();
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+    const container = document.getElementById('capsule-container');
+    if (!container) return;
+
+    if (diff > 0) {
+        // 如果还未到设定的解锁时间，显示锁闭状态与精确倒计时
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        container.innerHTML = `
+            <div class="locked-capsule">
+                <div class="lock-icon">🔒</div>
+                <p class="capsule-status-text">时间胶囊锁闭中...</p>
+                <div class="countdown-timer">${days}天 ${hours}时 ${minutes}分 ${seconds}秒</div>
+                <p class="capsule-notice">将于 2026年7月31日 23:59 自动解锁</p>
+            </div>
+        `;
+    } else {
+        // 到了解锁时间，自动显示解开的钥匙和点击开启的按钮
+        if (!container.classList.contains('unlocked-open')) {
+            container.innerHTML = `
+                <div class="unlocked-capsule">
+                    <div class="lock-icon open-lock">🔓</div>
+                    <p class="capsule-status-text">专属时间胶囊已解锁！</p>
+                    <button id="open-capsule-btn" class="open-capsule-btn">开启时间胶囊</button>
+                </div>
+            `;
+            
+            const openCapsuleBtn = document.getElementById('open-capsule-btn');
+            if (openCapsuleBtn) {
+                openCapsuleBtn.addEventListener('click', () => {
+                    container.classList.add('unlocked-open');
+                    container.innerHTML = `
+                        <div class="capsule-letter-paper">
+                            <div class="capsule-paper-header">⏳ 开启于 2026-07-31 23:59</div>
+                            <p class="capsule-letter-text">${currentFriend.capsuleLetter || "这是写给你的专属时间胶囊信件..."}</p>
+                        </div>
+                    `;
+                });
+            }
+        }
+    }
+}
+// 每一秒刷新一次倒计时
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// ==========================================
+// 8. 彩带雨逻辑
 // ==========================================
 function startConfetti() {
     const canvas = document.getElementById("confetti-canvas");
