@@ -15,17 +15,17 @@
     <!-- 移动端柔和背景光晕 -->
     <div class="bg-glow"></div>
 
-    <!-- 背景音乐：已绑定你的专属音频文件 farewell.mp3 -->
+    <!-- 背景音乐：farewell.mp3 -->
     <audio id="bg-music" loop>
         <source src="farewell.mp3" type="audio/mp3">
     </audio>
 
-    <!-- 手机左上角扁平化返回按钮 -->
+    <!-- 手机左上角返回按钮 -->
     <div id="back-btn" class="back-btn hide">
         <span class="back-icon">⬅️</span>
     </div>
 
-    <!-- 手机右上角扁平化音乐按钮 -->
+    <!-- 手机右上角音乐按钮 -->
     <div id="music-btn" class="music-btn hide">
         <span class="music-icon">🎵</span>
     </div>
@@ -45,11 +45,11 @@
     </div>
 
     <!-- ==========================================
-       二、 沉浸式移动贺卡页（单列纵向流）
+       二、 沉浸式移动贺卡页
        ========================================== -->
     <div id="card-screen" class="mobile-page-container hide">
         
-        <!-- 1. 信纸模版（写信区域） -->
+        <!-- 信纸模版（写信区域） -->
         <div class="letter-paper">
             <div class="paper-header-line"></div>
             <h2 class="salutation">亲爱的 <span id="friend-name"></span>：</h2>
@@ -59,7 +59,7 @@
             <div id="letter-content" class="letter-text"></div>
         </div>
 
-        <!-- 2. 时间胶囊板块 (7月31号 晚上11点59分 自动解锁) -->
+        <!-- 时间胶囊板块 (7月31号 晚上11点59分 自动解锁) -->
         <div class="capsule-section">
             <h3 class="section-title">⌛ 专属时间胶囊</h3>
             <div id="capsule-container" class="capsule-card">
@@ -67,14 +67,14 @@
             </div>
         </div>
 
-        <!-- 3. 匿名留言墙板块（已接入你的专属谷歌数据库！） -->
+        <!-- 匿名留言墙板块（已接入专属谷歌数据库） -->
         <div class="message-wall-section">
             <h3 class="section-title">🤫 匿名悄悄话墙</h3>
             <div class="message-wall-card">
-                <p class="wall-desc">有什么想对 Tom 说的悄悄话吗？写在下面提交，Tom 就能在谷歌表格里看到你的留言，其他人是看不见的哦。</p>
+                <p class="wall-desc">有什么想对 Tom 说的悄悄话吗？写在下面提交，Tom 就能在他的专属 Google 表格里看到你的留言，其他人是看不见的哦。</p>
                 
                 <form action="https://script.google.com/macros/s/AKfycbxMLO7yVcuhA8_tfxP6v13CPQDChqjYj0isn-DSEPXxI0oxfuBBNmxv4YOOunkqDRSq/exec" method="POST" class="message-form">
-                    <!-- 自动记录发信人中文名字的隐藏字段 -->
+                    <!-- 用来自动记录发信人中文名字的隐藏字段 -->
                     <input type="hidden" name="friend_name" id="hidden-friend-name" value="">
                     
                     <textarea name="message" class="message-input" placeholder="写下你想说的话..." required></textarea>
@@ -83,7 +83,7 @@
             </div>
         </div>
 
-        <!-- 4. 最后的专属祝福语 -->
+        <!-- 最后的专属祝福语 -->
         <div class="blessing-section">
             <div class="blessing-card">
                 <span class="quote-mark">“</span>
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <!-- 5. 底部签名区 -->
+        <!-- 底部签名区 -->
         <div class="footer-sign">
             <p>谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在</p>
             <p class="sign-name">—— Tom 仅此，有缘再见。</p>
