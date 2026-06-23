@@ -1,5 +1,5 @@
 // ==========================================
-// 1. 31位朋友的完整名单数据库 (首批 10 人手写信已完美导入)
+// 1. 31位朋友的完整名单数据库 (首批 10 人手写信已录入)
 // ==========================================
 const friendsData = {
     "eric": {
@@ -89,7 +89,7 @@ const friendsData = {
     "changzhe": {
         name: "Chang Zhe",
         role: "Tom",
-        letter: "Wasaiii 超级难看到你的, 所以知道了吧 要常来教会哈,\n我跟他们都超想你的, 只有你来了 我们才能多看帅哥xd.\n不知道你是不是在忙学业 but 记得再忙也要按时吃饭 多余的时间嘞\n不用想我 我没有那么自恋哈哈哈哈哈哈哈哈, 如果真的有多余的时间\n就拿去祷告吧 上帝比我们都想你的~",
+        letter: "Wasaiii 超级难看到你的, 所以知道了吧 要常来教会哈,\n我跟他们都超想你的, 只有你来了 我们才能多看帅哥xd.\n不知道你是不是在忙学业 but 记得再忙也要按时吃饭 多余的时间嘞\n不用想我 我没有那么自恋哈哈哈哈规则, 如果真的有多余的时间\n就拿去祷告吧 上帝比我们都想你的~",
         images: [
             "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop",
@@ -122,9 +122,7 @@ const friendsData = {
         capsuleLetter: "Ken Xiong，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
-    // ==========================================
-    // 以下朋友的内容，你可以在未来把他们的信写进 Excel 后发给我转换，或者你自己填空
-    // ==========================================
+    // 以下朋友的内容，你可以在未来写好后随时发给我转换
     "phoebe": {
         name: "Phoebe",
         role: "Tom",
@@ -211,7 +209,7 @@ const friendsData = {
         letter: "写给 Yan Yan 的长信内容...",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Yan Yan，时间胶囊已解锁！写给你的悄悄话...",
-        blessing: "谢谢你愿意看到这里，祝你前途似锦, 愿神的平安与你同在"
+        blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "hueichien": {
         name: "Huei Chien",
@@ -333,16 +331,46 @@ roleElement.innerText = currentFriend.role;
 letterElement.innerText = currentFriend.letter;
 blessingElement.innerText = currentFriend.blessing;
 
-// 设置悄悄话提交表单成功后的重定向网页链接，以便发送成功后返回
-document.getElementById('redirect-url').value = window.location.href + (window.location.search ? '&sent=true' : '?sent=true');
+// ==========================================
+// 3. 拦截留言提交 -> 异步上传至你的专属 Google 表格数据库 (无刷新) [1.1.2]
+// ==========================================
+const hiddenFriendName = document.getElementById('hidden-friend-name');
+if (hiddenFriendName) {
+    // 自动将当前朋友的真实中文名字写到隐藏的字段中，提交后可供 Google 表格直接记录
+    hiddenFriendName.value = currentFriend.name;
+}
 
-// ==========================================
-// 3. 检测是否成功提交了悄悄话留言
-// ==========================================
-if (urlParams.get('sent') === 'true') {
-    alert("留言发送成功！Tom 会在邮箱里收到你的悄悄话 🤫");
-    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search.replace(/[?&]sent=true/, '');
-    window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
+const messageForm = document.querySelector('.message-form');
+if (messageForm) {
+    messageForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // 阻止浏览器网页原生提交和刷新
+        
+        const submitBtn = messageForm.querySelector('.submit-msg-btn');
+        submitBtn.innerText = "正在投递匿名邮件中...";
+        submitBtn.disabled = true;
+
+        // 打包表单数据并异步发送给谷歌表格
+        const formData = new FormData(messageForm);
+        
+        fetch(messageForm.action, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors' // 允许在不产生跨域限制问题下投递成功
+        })
+        .then(() => {
+            // 提交成功弹窗
+            alert("匿名留言成功！Tom 已经能在他的专属 Google 表格里看到你的留言啦 🤫");
+            messageForm.reset(); // 清空输入框
+            submitBtn.innerText = "发送匿名邮件";
+            submitBtn.disabled = false;
+        })
+        .catch(err => {
+            console.error("提交至数据库失败:", err);
+            alert("由于网络原因发送失败，请稍后再试。");
+            submitBtn.innerText = "发送匿名邮件";
+            submitBtn.disabled = false;
+        });
+    });
 }
 
 // ==========================================
