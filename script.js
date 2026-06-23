@@ -1,5 +1,5 @@
 // ==========================================
-// 1. 31位朋友的完整名单数据库 (首批 10 人手写信已录入)
+// 1. 31位朋友的完整名单数据库 (手写信件全部手工录入并适配格式)
 // ==========================================
 const friendsData = {
     "eric": {
@@ -19,14 +19,14 @@ const friendsData = {
     "gloria": {
         name: "Gloria",
         role: "Tom",
-        letter: "Haloo Gloriaaa, 不知道之后还有没有机会再这样叫妳名字了,\n虽然妳开玩笑说我是妳永远的老大,\n但我知道妳已经不是Sem1那个懵懂的Gloria了,\n很抱歉这个sem才开始熟起来 刚开始要熟就要毕业了,\n所以之后记得跟Junior们多聊聊天 因为妳也是Senior之一了啦现在,\n虽然妳很人畜无害 但我知道妳没有那么笨 很多东西妳也是知道的\n只是没有说出来而已, 既然没要说出来的话\n那就继续做很可爱的Gloriaaa!!! 我知道妳有时候很喜欢靠自己来\n也很冷静 但妳也有很多人可以跟妳负担的, 最后记得要多露牙笑\n真的很好看!!",
+        letter: "Haloo Gloriaaa, 不知道之后还有没有机会再这样叫妳名字了,\n虽然妳开玩笑说我是妳永远的老大,\n但我知道妳已经不是Sem1那个懵懂的Gloria了,\n很抱歉这个sem才开始熟起来 刚开始要熟就要毕业了,\n所以之后记得跟Junior们多聊聊天 因为妳也是Senior之一了啦现在,\n... 妳很人畜无害 但我知道妳没有那么笨 很多东西妳也是知道的\n只是没有说出来而已, 既然没要说出来的话\n那就继续做很可爱的Gloriaaa!!! 我知道妳有时候很喜欢靠自己来\n也很冷静 但妳也有很多人可以跟妳负担的, 最后记得要多露牙笑\n真的很好看!!",
         capsuleLetter: "Gloria，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "abner": {
         name: "Abner",
         role: "Tom",
-        letter: "Yo Broooo, 很喜欢跟你讲话欸, 因为你讲的东西真的很match到我,\n我知道你是一个很有责任心的ahboy but 在我这里\n你就是最需要照顾的Junior, 上个sem看到你很down 我有点担心\nbut这个sem看到你好好地开心起来 我就放心很多了,\n记得不要跟别人吵架哈 不要破坏你在我心中乖乖的Abner形象哈.\nWell 你还是很幼稚 but\n我我觉得就是这份幼稚才能让其他人一见到你就很开心的理由, and\ndon't forget 多祷告 你要的全部东西 只有上帝才能给你的. 所以ya\n记得多message我 我毕业了过后会很想你的!!",
+        letter: "Yo Broooo, 很喜欢跟你讲话欸, 因为你讲的东西真的很match到我,\n我知道你是一个很有责任心的ahboy but 在我这里\n你就是最需要照顾的Junior, 上个sem看到你很down 我有点担心\n... 这个sem看到你好好地开心起来 我就放心很多了,\n记得不要跟别人吵架哈 不要破坏你在我心中乖乖的Abner形象哈.\nWell 你还是很幼稚 but\n我觉得就是这份幼稚才能让其他人一见到你就很开心的理由, and\ndon't forget 多祷告 你要的全部东西 只有上帝才能给你的. 所以ya\n记得多message我 我毕业了过后会很想你的!!",
         capsuleLetter: "Abner，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
@@ -54,7 +54,7 @@ const friendsData = {
     "changzhe": {
         name: "Chang Zhe",
         role: "Tom",
-        letter: "Wasaiii 超级难看到你的, 所以知道了吧 要常来教会哈,\n我跟他们都超想你的, 只有你来了 我们才能多看帅哥xd.\n不知道你是不是在忙学业 but 记得再忙也要按时吃饭 多余的时间嘞\n不用想我 我没有那么自恋哈哈哈哈规则, 如果真的有多余的时间\n就拿去祷告吧 上帝比我们都想你的~",
+        letter: "Wasaiii 超级难看到你的, 所以知道了吧 要常来教会哈,\n我跟他们都超想你的, 只有你来了 我们才能多看帅哥xd.\n不知道你是不是在忙学业 but 记得再忙也要按时吃饭 多余的时间嘞\n不用想我 我没有那么自恋哈哈哈哈哈哈哈哈, 如果真的有多余的时间\n就拿去祷告吧 上帝比我们都想你的~",
         capsuleLetter: "Chang Zhe，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
@@ -68,7 +68,7 @@ const friendsData = {
     "kenxiong": {
         name: "Ken Xiong",
         role: "Tom",
-        letter: "看到我的message了吧!! 你没有来到教会之前\n我可能是那个很吵的人,但你来了过后 你就是那个最吵的人了,\n但有你在 真的很好, 整个教会的气氛都被你点燃了直接,\n我们毕业过后嘞 你再也烦不到Ennis了 but 你可以去烦Gloria的\n只要不喷口水在Gloria身上就好,\n不然我不敢想象她会怎样的reaction, 我算是很早就知道你了\nbut那个时候我没有理你那么多哈哈哈哈哈哈 但你现在有来教会\n我就开始跟你有些比较多话了. 所以趁我还没有毕业\n可以给你多烦我 的不然我会渐渐的忘记你~ 因为你没有跟我吃饭~",
+        letter: "看到我的message了吧!! 你没有来到教会之前\n我可能是那个很吵的人,但你来了过后 你就是那个最吵的人了,\n但有你在 真的很好, 整个教会的气氛都被你点燃了直接,\n我们毕业过后嘞 你再也烦不到Ennis了 but 你可以去烦Gloria的\n只要不喷口水在Gloria身上就好,\n不然我不敢想象她会怎样的reaction, 我算是很早就知道你了\n... 那个时候我没有理你那么多哈哈哈哈哈哈 但你现在有来教会\n我就开始跟你有些比较多话了. 所以趁我还没有毕业\n可以给你多烦我 的不然我会渐渐的忘记你~ 因为你没有跟我吃饭~",
         capsuleLetter: "Ken Xiong，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
@@ -89,7 +89,7 @@ const friendsData = {
     "yeexuan": {
         name: "Yee Xuan",
         role: "Tom",
-        letter: "Haizz 我毕业过后 妳应该是最开心的那个人了, 因为没有人再怼妳了,\n想当初一开始看到妳 妳就充满尖酸刻薄的咆哮个人, but\n我觉得妳是故意选择性的 妳没有针对哪些女生 or\n可能妳只对我最暴力, haizz 没事\n我相信之后还会有人继承我的position 继续跟妳怼的, What can I say,\n慈善cc下班啦 然后继续做kkke的牛马哈哈哈哈哈哈 记得少惹人\n多点peace 明明是一个刀子嘴豆腐心的人 但嘴巴就是超毒的~",
+        letter: "Haizz 我毕业过后 妳应该是最开心的那个人了, 因为没有人再怼妳了,\n想当初一开始看到妳 妳就充满尖酸刻薄的咆哮个人, but\n我觉得妳是故意选择性的 妳没有针对哪些女生 or\n可能妳只对我最暴力, haizz 没事\n我相信之后还会有人继承我的position 继续跟妳怼的, What can I say,\n...cc下班啦 然后继续做kkke的牛马哈哈哈哈哈哈 记得少惹人\n多点peace 明明是一个刀子嘴豆腐心的人 但嘴巴就是超毒的~",
         capsuleLetter: "Yee Xuan，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
@@ -117,14 +117,14 @@ const friendsData = {
     "yongjun": {
         name: "Yong Jun",
         role: "Tom",
-        letter: "Hallooo YongJun, 你看起来真的很年轻 我经常一度认为你是Junior 结果你也是跟我们一起毕业了哈哈哈哈哈哈哈哈, 虽然脸很嫩 but 你真的是一个big brother 还要麻烦你做教会的人事物理 真的辛苦了!!! 之后不知道还有没有机会再见面 我去sarawak的时候 一定会去找你玩的 不不然你去西马也可以 我也能带你走哈哈哈哈轮, 很可惜那么迟才熟起来 毕业过后记得要多联系哦!!",
+        letter: "Hallooo YongJun, 你看起来真的很年轻 我经常一度认为你是Junior 结果你也是跟我们一起毕业了哈哈哈哈哈哈哈哈, 虽然脸很嫩 but 你真的是一个big brother 还要麻烦你做教会的人事物理 真的辛苦了!!! 之后不知道还有没有机会再见面 我去sarawak的时候 一定会去找你玩的 不然你去西马也可以 我也能带你走哈哈哈哈轮, 很可惜那么迟才熟起来 毕业过后记得要多联系哦!!",
         capsuleLetter: "Yong Jun，时间胶囊已解锁！感谢一路陪伴，祝前途似锦！",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
     "jiayao": {
         name: "Jia Yao",
         role: "Tom",
-        letter: "もしもし 你真的是一个超随心随性的人, 很多东西都是 okkk, 跟你们真的是超级放心的, but 讲话的太少了 啦 没什么得到跟你聊到天 可能还没找到我们共同的话题 有机会真的会很想跟你多讲话, 我很想念你之前烫过的头发 真的很好看 不知道为什么现在没有了 but 我感觉你带眼镜会很有feel 你可以trytry看. 我们来不及熟了啦 那就祝你intern顺利 然后找到男朋友 记得要po出来 我很想吃你撒 of 狗粮的!!!",
+        letter: "もしもし 你真的是一个超随心随性的人, 很多东西都是 okkk, 跟你们真的是超级放心的, but 讲话的太少了 啦 没什么得到跟你聊到天 可能还没找到我们共同的话题 有机会真的会很想跟你多讲话, 我很想念你之前烫过的头发 真的很好看 不知道为什么现在没有了 but 我感觉你带眼镜会很有feel 你可以trytry看. 我们来不及熟了啦 那就祝你intern顺利 然后找到男朋友 记得要po出来 我很想吃你撒 of 狗粮的!!!"
         capsuleLetter: "Jia Yao，时间胶囊已解锁！感谢一路陪伴，祝前途似锦！",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
@@ -138,7 +138,7 @@ const friendsData = {
     "shirley": {
         name: "Shirley",
         role: "Tom",
-        letter: "哇!! 真的超喜欢和妳呆在一起的 真的很舒服!! But 感觉妳有很多心事在心里, 我也没敢问妳 所以等妳之后想说的时候就跟妳最信任的人说哦 我相信妳的信靠人会愿意聆听妳讲话的!! 回想之前我们还是第一次参加as的camp 的一Gang 但现在我们到我们毕业了 时间真的过的挺快的, 之后没有assignment了 记得多找我们聊天, 等哪天我reply妳story的时候 就是证明我们已经很久没有聊天了哈哈哈哈哈哈, but anyways 记得多照顾好自己 祝intern快乐!!",
+        letter: "哇!! 真的超喜欢和妳呆在一起的 真的很舒服!! But 感觉妳有很多心事在心里, 我也没敢问妳 所以等妳之后想说的时候就跟妳最信任的人说哦 我相信妳的信靠人会愿意聆听妳讲话的!! 回想之前我们还是第一次参加as的camp 的一Gang 但现在我们到我们毕业了 时间真的过的挺快的, 之后没有assignment了 记得多找我们聊天, 等哪天我reply妳story的时候 就是证明我们已经很久没有聊天了哈哈哈哈铺, but anyways 记得多照顾好自己 祝intern快乐!!",
         capsuleLetter: "Shirley，时间胶囊已解锁！感谢一路陪伴，祝前途似锦！",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
@@ -254,20 +254,8 @@ roleElement.innerText = currentFriend.role;
 letterElement.innerText = currentFriend.letter;
 blessingElement.innerText = currentFriend.blessing;
 
-// 设置悄悄话提交表单成功后的重定向网页链接
-document.getElementById('redirect-url').value = window.location.href + (window.location.search ? '&sent=true' : '?sent=true');
-
 // ==========================================
-// 3. 检测是否成功提交了悄悄话留言
-// ==========================================
-if (urlParams.get('sent') === 'true') {
-    alert("留言发送成功！Tom 已经能在他的专属 Google 表格里看到你的留言啦 🤫");
-    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.search.replace(/[?&]sent=true/, '');
-    window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
-}
-
-// ==========================================
-// 4. 拦截留言提交 -> 异步上传至你的专属 Google 表格数据库 (无刷新)
+// 3. 拦截留言提交 -> 异步上传至你的专属 Google 表格数据库 (无刷新)
 // ==========================================
 const hiddenFriendName = document.getElementById('hidden-friend-name');
 if (hiddenFriendName) {
@@ -306,7 +294,7 @@ if (messageForm) {
 }
 
 // ==========================================
-// 5. 封面转场、返回封面及音乐控制逻辑
+// 4. 封面转场、返回封面及音乐控制逻辑
 // ==========================================
 const welcomeScreen = document.getElementById('welcome-screen');
 const cardScreen = document.getElementById('card-screen');
@@ -366,7 +354,7 @@ musicBtn.addEventListener('click', () => {
 });
 
 // ==========================================
-// 6. ⏳ 时间胶囊逻辑（7月31号 晚上11点59分 开启）
+// 5. ⏳ 时间胶囊逻辑（7月31号 晚上11点59分 开启）
 // ==========================================
 const targetDate = new Date("2026-07-31T23:59:00").getTime();
 
@@ -419,7 +407,7 @@ setInterval(updateCountdown, 1000);
 updateCountdown();
 
 // ==========================================
-// 7. 彩带雨逻辑
+// 6. 彩带雨逻辑
 // ==========================================
 function startConfetti() {
     const canvas = document.getElementById("confetti-canvas");
