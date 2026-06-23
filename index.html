@@ -15,17 +15,17 @@
     <!-- 移动端柔和背景光晕 -->
     <div class="bg-glow"></div>
 
-    <!-- 背景音乐：1. 已修改为你上传的音频名字 farewell.mp3 -->
+    <!-- 背景音乐：已修改为你上传的音频名字 farewell.mp3 -->
     <audio id="bg-music" loop>
         <source src="farewell.mp3" type="audio/mp3">
     </audio>
 
-    <!-- 手机左上角返回按钮（已改版为极简扁平样式） -->
+    <!-- 手机左上角返回按钮 -->
     <div id="back-btn" class="back-btn hide">
         <span class="back-icon">⬅️</span>
     </div>
 
-    <!-- 手机右上角音乐按钮（已改版为极简扁平样式） -->
+    <!-- 手机右上角音乐按钮 -->
     <div id="music-btn" class="music-btn hide">
         <span class="music-icon">🎵</span>
     </div>
@@ -64,19 +64,15 @@
             <div id="letter-content" class="letter-text"></div>
         </div>
 
-        <!-- 照片滑动区域（2. 已加入左右切换控制按钮） -->
+        <!-- 照片滑动区域（已加入左右切换控制按钮） -->
         <div class="photo-section">
             <h3 class="section-title">✨ 我们的精彩瞬间</h3>
             
             <div class="carousel-container">
-                <!-- 左切换按钮 -->
                 <button id="prev-btn" class="carousel-nav-btn prev">◀</button>
-                
                 <div id="carousel-track" class="carousel-track">
                     <!-- 照片由 JS 动态加载 -->
                 </div>
-                
-                <!-- 右切换按钮 -->
                 <button id="next-btn" class="carousel-nav-btn next">▶</button>
             </div>
             
@@ -98,14 +94,15 @@
             <div class="message-wall-card">
                 <p class="wall-desc">有什么想对 Tom 说的悄悄话吗？写在下面提交，Tom 就能在邮箱里收到你的留言，其他人是看不见的哦。</p>
                 
-                <!-- 邮箱已预设为你的邮箱，发送后重定向返当前页 -->
+                <!-- 💡 激活后，你可以把下面的 tomloh1110@gmail.com 替换为 FormSubmit 给你的那串随机代码来隐藏你的邮箱 -->
                 <form action="https://formsubmit.co/tomloh1110@gmail.com" method="POST" class="message-form">
                     <input type="text" name="_honey" style="display:none">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" id="redirect-url" name="_next" value="">
                     
                     <textarea name="悄悄话" class="message-input" placeholder="写下你想说的话..." required></textarea>
-                    <button type="submit" class="submit-msg-btn">发送悄悄话给 Tom</button>
+                    <!-- 1. 按钮文字已修改为“发送匿名邮件” -->
+                    <button type="submit" class="submit-msg-btn">发送匿名邮件</button>
                 </form>
             </div>
         </div>
