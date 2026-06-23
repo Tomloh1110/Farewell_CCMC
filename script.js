@@ -1,5 +1,5 @@
 // ==========================================
-// 1. 31位朋友的完整名单数据库 (首批 10 人手写信已录入)
+// 1. 31位朋友的完整名单数据库 (31位朋友手写信已录入完毕)
 // ==========================================
 const friendsData = {
     "eric": {
@@ -29,7 +29,7 @@ const friendsData = {
     "gloria": {
         name: "Gloria",
         role: "Tom",
-        letter: "Haloo Gloriaaa, 不知道之后还有没有机会再这样叫妳名字了,\n虽然妳开玩笑说我是妳永远的老大,\n但我知道妳已经不是Sem1那个懵懂的Gloria了,\n很抱歉这个sem才开始熟起来 刚开始要熟就要毕业了,\n所以之后记得跟Junior们多聊聊天 因为妳也是Senior之一了啦现在,\n虽然妳很人畜无害 但我知道妳没有那么笨 很多东西妳也是知道的\n只是没有说出来而已, 既然没要说出来的话\n那就继续做很可爱的Gloriaaa!!! 我知道妳有时候很喜欢靠自己来\n也很冷静 但妳也有很多人可以跟妳负担的, 最后记得要多露牙笑\n真的很好看!!",
+        letter: "Haloo Gloriaaa, 不知道之后还有没有机会再这样叫妳名字了,\n虽然妳开玩笑说我是妳永远的老大,\n但我知道妳已经不是Sem1那个懵懂的Gloria了,\n很抱歉这个sem才开始熟起来 刚开始要熟就要毕业了,\n所以之后记得跟Junior们多聊聊天 因为妳也是Senior之一了啦现在,\n虽然妳很人畜无害 但我知道妳没有那么笨 很多东西妳也是知道的\n只是没有说出来而已, 既然没要说出来的话\n那就继续做很可爱的Gloriaaa!!! 我知道妳有时候很喜欢靠自己来\n也很冷静 但妳也有很多人可以跟妳负担的, 最后记得要多露牙笑\n真的很好看!! 然后要多回复message\n妳message真的跟妳本人一样冷静 我们会很sad的欸哈哈哈哈哈哈哈",
         images: [
             "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop",
@@ -41,7 +41,7 @@ const friendsData = {
     "abner": {
         name: "Abner",
         role: "Tom",
-        letter: "Yo Broooo, 很喜欢跟你讲话欸, 因为你讲的东西真的很match到我,\n我知道你是一个很有责任心的ahboy but 在我这里\n你就是最需要照顾的Junior, 上个sem看到你很down 我有点担心\nbut这个sem看到你好好地开心起来 我就放心很多了,\n记得不要跟别人吵架哈 不要破坏你在我心中乖乖的Abner形象哈.\nWell 你还是很幼稚 but\n我我觉得就是这份幼稚才能让其他人一见到你就很开心的理由, and\ndon't forget 多祷告 你要的全部东西 只有上帝才能给你的. 所以ya\n记得多message我 我毕业了过后会很想你的!!",
+        letter: "Yo Broooo, 很喜欢跟你讲话欸, 因为你讲的东西真的很match到我,\n我知道你是一个很有责任心的ahboy but 在我这里\n你就是最需要照顾的Junior, 上个sem看到你力down 我有点担心\nbut这个sem看到你好好地开心起来 我就放心很多了,\n记得不要跟别人吵架哈 不要破坏你在我心中乖乖的Abner形象哈.\nWell 你还是很幼稚 but\n我觉得就是这份幼稚才能让其他人一见到你就很开心的理由, and\ndon't forget 多祷告 你要的全部东西 只有上帝才能给你的. 所以ya\n记得多message我 我毕业了过后会很想你的!!",
         images: [
             "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop",
@@ -89,7 +89,7 @@ const friendsData = {
     "changzhe": {
         name: "Chang Zhe",
         role: "Tom",
-        letter: "Wasaiii 超级难看到你的, 所以知道了吧 要常来教会哈,\n我跟他们都超想你的, 只有你来了 我们才能多看帅哥xd.\n不知道你是不是在忙学业 but 记得再忙也要按时吃饭 多余的时间嘞\n不用想我 我没有那么自恋哈哈哈哈规则, 如果真的有多余的时间\n就拿去祷告吧 上帝比我们都想你的~",
+        letter: "Wasaiii 超级难看到你的, 所以知道了吧 要常来教会哈,\n我跟他们都超想你的, 只有你来了 我们才能多看帅哥xd.\n不知道你是不是在忙学业 but 记得再忙也要按时吃饭 多余的时间嘞\n不用想我 我没有那么自恋哈哈哈哈哈哈哈哈, 如果真的有多余的时间\n就拿去祷告吧 上帝比我们都想你的~",
         images: [
             "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop",
@@ -122,11 +122,10 @@ const friendsData = {
         capsuleLetter: "Ken Xiong，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
     },
-    // 以下朋友的内容，你可以在未来写好后随时发给我转换
     "phoebe": {
         name: "Phoebe",
         role: "Tom",
-        letter: "写给 Phoebe 的长信内容...",
+        letter: "妳好 Phoebe~ 很高兴我们已经算是Senior之一了\n我印象中妳一直都是睡不醒的样子 but 妳很容易说on的\n我严重怀疑妳一定是个P人, btw 妳是弹Piano很厉害的人!!\n很E的时候真的很E 不E的时候就真的没有表情的,\n最省印象就是妳训yeenan的时候 哇真的帅爆了!\n还有一个我超佩服的点就是 妳自拍真的是360度无死角的\n都找不到丑照了, but anyways 教会之后就剩下你们几个了\n记得carry好kenxiong和gloria 不要打架!!",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Phoebe，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -134,7 +133,7 @@ const friendsData = {
     "shinrou": {
         name: "ShinRou",
         role: "Tom",
-        letter: "写给 ShinRou 的长信内容...",
+        letter: "MoshiMoshi, 终于轮到妳做Senior了哈哈哈哈哈哈\n妳依然是CCMC的团宠 所以要好好珍惜她们的爱\n然后也要好好爱Junior们, 哇 还有 妳的发型真的是千变万化\n而且真的都很好看 都不知道妳是怎么样绑的\n有机会的话我要教老怎么样绑的哈哈哈哈哈,\n之后再也很难一起晚上出来聊天了 因为我毕业了\n你们就要说别人来代替我了 so sad. But 没关系你们要开开心心就好\n记得继续做CCMC的开心果 有缘在的地方氛围会直接变得很好\n所以不要管别人说妳什么哦 自己开心最重要!!!",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "ShinRou，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -142,7 +141,7 @@ const friendsData = {
     "yeexuan": {
         name: "Yee Xuan",
         role: "Tom",
-        letter: "写给 Yee Xuan 的长信内容...",
+        letter: "Haizz 我毕业过后 妳应该是最开心的那个人了, 因为没有人再怼妳了,\n想当初一开始怼到妳 妳就充满火药味的怼每个人, but\n我觉得妳是故意这样的 毕竟没有怼到过年轻女生 or\n可能妳只给我最暴力, haizz 没事\n我相信之后还会有人继承我的position 继续想跟妳的. What can I say,\n恭喜cc下班啦 然后继续做kkke的牛马哈哈哈哈哈哈 记得少惹人\n多点peace 明明是一个力子嘴豆腐心的人 但嘴巴就是超毒的",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Yee Xuan，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -150,7 +149,7 @@ const friendsData = {
     "natalie": {
         name: "Natalie",
         role: "Tom",
-        letter: "写给 Natalie 的长信内容...",
+        letter: "安婷, 比较大你一届的Natalie, 在教会真的超安静的\n但网友的时候就很会讲话, 看来我们很适合做网友哈哈哈哈\n所以有什么 我会随时reply 妳story的 因为妳的story都超好看的,\n不愧是我一开始认定的旅游博主, 之后去旅游世界的时候 记得po\n多一点story 如果妳再开心 可以给我写明信片xd 好啦 下个sem过后\n记得要多讲话 不要再diamdiam了 妳也是个Senior了\n记得多爱妳的Junior们 although 我知道妳讨厌弟弟哈哈哈哈哈哈",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Natalie，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -158,7 +157,7 @@ const friendsData = {
     "ziwei": {
         name: "Zi Wei",
         role: "Tom",
-        letter: "写给 Zi Wei 的长信内容...",
+        letter: "Yoo Zi Weiii, 我们两个真的是超级无厘头 不知道为什么一个眼神\n妳都能get到我的意思, 而且我们都是超感性的人\n所以不要去管别人讲什么哦 依自己的感受是最重要的, and\n妳唱歌真的很甜很好听 如果有自带的崇拜 我都会跟你期待那一天的到来\nbut 很可惜 已经没人很有听到妳唱歌了\n有机真的会很想再听妳唱歌 真的超级best!!! 过多几个星期\n我就要毕业了啦 不知道还能不能跟你聊很多match几次\n所以记得要跟教会的人要好好的哦, 我知道妳可能没那么喜欢人\n但妳要记得教会是上帝的殿 所以不要忘记去祷告哦~",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Zi Wei，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -166,7 +165,7 @@ const friendsData = {
     "adrian": {
         name: "Adrian",
         role: "Tom",
-        letter: "写给 Adrian 的长信内容...",
+        letter: "少爷好!! 虽然你没有花过钱在我身上 但我依然觉得你是少爷!!\n很可惜到毕业了 还没有跟你熟悉起来 如果给我再来一次\n我一定要先认识你 因为你真的很搞笑的 每次看你在做assignment\n都觉得你很命苦, but 后来看到你很努力\n我就觉得你更命苦了哈哈哈哈哈哈哈哈,\n不知道你Farewell的时候会不会哭 but 我很肯定\n你是哭得最惨的那个 (bushi)",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Adrian，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -174,7 +173,7 @@ const friendsData = {
     "yongjun": {
         name: "Yong Jun",
         role: "Tom",
-        letter: "写给 Yong Jun 的长信内容...",
+        letter: "Hallooo YongJun, 你看起来真的很年轻 我经常一度认为你是Junior\n结果你也很跟我们一起毕业了哈哈哈哈哈哈哈, 虽然很酸微 but\n你真的是一个big brother 还要烦恼你操心教会的人事物\n真的是辛苦了!!! 之后不知道还有没有机会再见面\n我去sarawak的时候 一定会去找你玩的 不然你去槟城也可以\n我也能带你去吃哈哈哈哈哈哈, 很可惜那么迟才要熟起来\n毕业过后记得要多多联系呗!!",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Yong Jun，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -182,7 +181,7 @@ const friendsData = {
     "jiayao": {
         name: "Jia Yao",
         role: "Tom",
-        letter: "写给 Jia Yao 的长信内容...",
+        letter: "もしもし 你真的是一个超随心随性的人, 很多东西都是okkk,\n跟你出门真的是超放心的, but 讲话真的太少了啦\n没有什么得到跟你聊到天 可能还没有找到我们的共同话题\n有机会真的会很想跟你多讲话, 很想听你之前演过的头发\n真的很好看欸 不知道为什么现在没有了 but\n我感觉你带眼镜会很有feel 你可以trytry看, 我们来不及熟了啦\n那就祝你intern顺利 然后找到男朋友 记得po出来\n我很想吃你做的狗粮的!!!",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Jia Yao，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -190,7 +189,7 @@ const friendsData = {
     "ennis": {
         name: "Ennis",
         role: "Tom",
-        letter: "写给 Ennis 的长信内容...",
+        letter: "Nis姐不愧是Nis姐, 毕业了还是一样看到CCMC嘴最硬的人, 很paiseh\n之前一直放妳的飞机, 之后肯定不会了!! Redang trip 一定要成\n不然我很难再看到你们了, 不敢想象毕业过后 妳会老爱飞来飞去, but\n照顾好自己就好了啦 妳可是Nis姐 是不会让别人担心的,\n哪里懂下次在机场会和妳偶遇 还是你会来哈哈哈\n很可惜毕业了还不够认识妳 以后我会继续reply妳的story\n不然妳应该会忘记我了... but anyways Intern 快乐哈哈哈哈哈哈\n世界那么大 一定有的容身之处的!!",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Ennis，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -198,7 +197,7 @@ const friendsData = {
     "shirley": {
         name: "Shirley",
         role: "Tom",
-        letter: "写给 Shirley 的长信内容...",
+        letter: "哇!! 真的超喜欢和妳呆在一起的 真的很舒服!! But\n感觉妳有很多心事在心里, 我也没敢问妳\n所以等妳之后想说的时候就跟妳最信任的人说哦\n我相信妳信任的人会很愿意听妳讲话的!!\n回想之前我们还是第一次参加as的camp的一Gang\n但现在我挑到我们毕业了 时间真的过的挺快的,\n之后没有assignment了 记得多找我们聊天,\n等那天我reply妳story的时候\n就是证明我们已经很久没有聊天了哈哈哈哈哈哈, but anyways\n记得多照顾好自己 intern快乐!!",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Shirley，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -206,7 +205,7 @@ const friendsData = {
     "yanyan": {
         name: "Yan Yan",
         role: "Tom",
-        letter: "写给 Yan Yan 的长信内容...",
+        letter: "Yoo 竟然是YanYan欸, 要毕业了哈 CCMC又在失去一个领唱了\n妳跟ShinRou怎么话啊哈哈哈哈 都没有什么跟妳聊到天 but\n我感觉妳真的超级好的一个人, 很喜欢作弄妳\n因为妳真的很kawaii的说 应该是参ShinRou太多了 妳哈哈哈哈\n以后不要在用鄙视的眼神看我了 我真的会takut啊哈哈哈哈\n记得多po story欸 不然都不知道妳过得好不好了 so\n毕业过后要好好的哦 想念我们的话就回来CCMC找ShinRou就好\n因为在penang intern 所以应该是很难见到了...",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Yan Yan，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -214,7 +213,7 @@ const friendsData = {
     "hueichien": {
         name: "Huei Chien",
         role: "Tom",
-        letter: "写给 Huei Chien 的长信内容...",
+        letter: "Hiiiii 真的超甜的HueiChien, 妳真的超好看的! 很喜欢跟妳讲话\n真的很开心, 知道妳一直都在忙辩论\n但是一直做自己很热爱的东西真的很酷!!!\n我毕业过后会很想念你们的 少一个可以聊天和打闹的人\n我真的会很heartbreak的, but anyways 如果妳们有想找我的话\n可以跟我讲 我在penang而已 可以随时飞下来找你们玩的!!!\n所以before 我毕业之前 记得多找我出门 我我会提供情绪价值的!!!",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Huei Chien，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -222,7 +221,7 @@ const friendsData = {
     "justin": {
         name: "Justin",
         role: "Tom",
-        letter: "写给 Justin 的长信内容...",
+        letter: "Hi Justin, 从你sem 1看到你现在 真的感概时间过得真的很快,\n从我们做小组长 轮到你做小组长了, 记得要多多祷告\n不要忘记上帝的教导, 我知道你有时候很奇怪\n但只要是跟着圣经里的lesson 什么都好, 我们毕业\n就轮到你做senior了哈 所以要照顾好自己 然后考试加油!!!",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Justin，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -230,7 +229,7 @@ const friendsData = {
     "dunxiang": {
         name: "Dun Xiang",
         role: "Tom",
-        letter: "写给 Dun Xiang 的长信内容...",
+        letter: "Yeahhh你弹piano的时候超帅的but我更喜欢听你唱歌,\n你真的超超人的, 而且你是一个很喜欢记录生活的人\n超喜欢看你的vlog的 因为感觉我也能体验到你的每一天了,\n很快你也要做senior了啦, 所以记得多教junior弹piano哦\n这样你就能更专业在老唱歌上面了!! 如果想我们了话\n就like我们的story吧 我们也能知道你想我们了xd哈哈哈",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Dun Xiang，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -238,7 +237,7 @@ const friendsData = {
     "kelly": {
         name: "Kelly",
         role: "Tom",
-        letter: "写给 Kelly 的长信内容...",
+        letter: "Hi Kelly, 真的是一个很E的人, 连我那么E的人都不敢找妳讲话,\n真的很防备害怕哈哈哈的, 毕业过后记得要好好的哦\n要多多的去基督徒的, 然后如果还记得我\n可以随时like我的story的真的真的哈哈哈,\n那就先祝妳前途似锦 多想我们哈哈哈哈哈",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Kelly，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -246,7 +245,7 @@ const friendsData = {
     "weien": {
         name: "Wei En",
         role: "Tom",
-        letter: "写给 Wei En 的长信内容...",
+        letter: "Hii Anak B40(I think T20 is more suitable for u), 很paiseh\n之前偷窥你们, 想想觉得很幼稚, 希望你们不要放在心上,\n一直都觉得你真的是全能的, 感觉你什么都会\n而且都很pro的存在 拉你上卡 真的很滑鞋\n没有想到一个东西是你不会的, but\n你的头发真的是一个很神奇的存在,\n你已经差不多是要会发长发里的男生了, but\n我很喜欢你像鬼的那个发型 真的超帅的,\n毕业之前给我再摸多次你的头发哈哈哈哈哈哈哈\n这样你就不会忘记我了xd",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Wei En，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -254,7 +253,7 @@ const friendsData = {
     "lydia": {
         name: "Lydia",
         role: "Tom",
-        letter: "写给 Lydia 的长信内容...",
+        letter: "Hii Lydia, 一开始听到这个名字 我真的以为是一个junior\n可是妳竟然是跟我同一毕业的同一batch人,\n连我那么E的人都不敢找妳讲话 看来妳真的很E!我觉得哈哈哈哈,\n记得要多戴物粮 我真的很配服你们的妳 but\n我只有在uum才能看到你们paktor而已 study完看有没有你们的痕迹的说,\nbut anyways 毕业快乐啦!!",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Lydia，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -262,7 +261,7 @@ const friendsData = {
     "kianqiang": {
         name: "Kian Qiang",
         role: "Tom",
-        letter: "写给 Kian Qiang 的长信内容...",
+        letter: "Hi KianQiang, 真的很久没有看到你了欸, but\n我在学校的各个角落看到你, 看到你过得好 我就很放心了哦,\n记得要多联系我 跟你应该我的ig 了 到时候多like我的story\n我就知道你还有在记得我了哦",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Kian Qiang，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -270,7 +269,7 @@ const friendsData = {
     "jingxi": {
         name: "Jing Xi",
         role: "Tom",
-        letter: "写给 Jing Xi 的长信内容...",
+        letter: "Hola, 妳真的是Senior中的Senior了,\n连我这个Senior都要叫妳学姐的程度了哈哈哈哈哈哈哈,\n妳真的很slow 不管是吃饭还是说话速度, 我真的很难给妳开fast\nforward哈哈哈哈 恭喜是赢了那么久 终于毕业了, intern的时候\n要专心intern 不要再摸鱼了, 我期待妳成为official lawyer的那天,\n到时候就可以请你来跟我kenxiong辩论了哈哈哈哈哈\n那就祝妳毕业快乐 前程似锦啦!!",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Jing Xi，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -278,7 +277,7 @@ const friendsData = {
     "angelina": {
         name: "Angelina",
         role: "Tom",
-        letter: "写给 Angelina 的长信内容...",
+        letter: "是Angelina欸, 妳跟妳boyfriend真的是我们超磕的cp!!!\n要多po你们两个的story 真的超好看的!!\n一开始还是很感谢penangSabah的东西 然后后来再跟你认识了\n真的很不好意思! but 我印象最深刻的还是妳的微笑呀\n简直是CCMC最positive的人 毕业快乐!!",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Angelina，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
@@ -286,7 +285,7 @@ const friendsData = {
     "junping": {
         name: "Jun Ping",
         role: "Tom",
-        letter: "写给 Jun Ping 的长信内容...",
+        letter: "Damn random my boy~ 明明用点心那个发型都超帅了\n奈何你懒懒得哈哈哈哈哈哈, but 也好\n你现在的发型真的是超可爱的, 能认识到你真的很开心欸 你很\n但认识过后直E到不是junping了哈哈哈哈哈哈,\n以后记得多like我story 不然你真的是diamdiam到消失过去了",
         images: ["https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600", "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600", "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600"],
         capsuleLetter: "Jun Ping，时间胶囊已解锁！写给你的悄悄话...",
         blessing: "谢谢你愿意看到这里，祝你前途似锦，愿神的平安与你同在"
