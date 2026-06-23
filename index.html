@@ -15,7 +15,7 @@
     <!-- 移动端柔和背景光晕 -->
     <div class="bg-glow"></div>
 
-    <!-- 背景音乐：已修改为你上传的音频名字 farewell.mp3 -->
+    <!-- 背景音乐：farewell.mp3 -->
     <audio id="bg-music" loop>
         <source src="farewell.mp3" type="audio/mp3">
     </audio>
@@ -64,7 +64,7 @@
             <div id="letter-content" class="letter-text"></div>
         </div>
 
-        <!-- 照片滑动区域（已加入左右切换控制按钮） -->
+        <!-- 照片滑动区域（含左右控制按键） -->
         <div class="photo-section">
             <h3 class="section-title">✨ 我们的精彩瞬间</h3>
             
@@ -88,20 +88,18 @@
             </div>
         </div>
 
-        <!-- 匿名留言墙板块 -->
+        <!-- 匿名留言墙板块（🔒 已完美接入你的专属谷歌数据库！） -->
         <div class="message-wall-section">
             <h3 class="section-title">🤫 匿名悄悄话墙</h3>
             <div class="message-wall-card">
-                <p class="wall-desc">有什么想对 Tom 说的悄悄话吗？写在下面提交，Tom 就能在邮箱里收到你的留言，其他人是看不见的哦。</p>
+                <p class="wall-desc">有什么想对 Tom 说的悄悄话吗？写在下面提交，Tom 就能在他的专属 Google 表格里看到你的留言，其他人是看不见的哦。</p>
                 
-                <!-- 💡 激活后，你可以把下面的 tomloh1110@gmail.com 替换为 FormSubmit 给你的那串随机代码来隐藏你的邮箱 -->
-                <form action="https://formsubmit.co/tomloh1110@gmail.com" method="POST" class="message-form">
-                    <input type="text" name="_honey" style="display:none">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" id="redirect-url" name="_next" value="">
+                <!-- 已经直接绑定你申请的专属 exec 链接 -->
+                <form action="https://script.google.com/macros/s/AKfycbxMLO7yVcuhA8_tfxP6v13CPQDChqjYj0isn-DSEPXxI0oxfuBBNmxv4YOOunkqDRSq/exec" method="POST" class="message-form">
+                    <!-- 用来自动记录发信人中文名字的隐藏字段 -->
+                    <input type="hidden" name="friend_name" id="hidden-friend-name" value="">
                     
-                    <textarea name="悄悄话" class="message-input" placeholder="写下你想说的话..." required></textarea>
-                    <!-- 1. 按钮文字已修改为“发送匿名邮件” -->
+                    <textarea name="message" class="message-input" placeholder="写下你想说的话..." required></textarea>
                     <button type="submit" class="submit-msg-btn">发送匿名邮件</button>
                 </form>
             </div>
